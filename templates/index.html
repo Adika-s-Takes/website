@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section id="billboard" class="overflow-hidden">
+
+  <button class="button-prev">
+    <i class="icon icon-chevron-left"></i>
+  </button>
+  <button class="button-next">
+    <i class="icon icon-chevron-right"></i>
+  </button>
+  <div class="swiper main-swiper">
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide" style="background-image: url('{% static 'images/wish.jpg' %}');background-repeat: no-repeat;background-size: cover;background-position: center;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3);"></div>
+        <div class="banner-content">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <h2 class="banner-title" style="color: #a5d326;">Make a wish 🌟</h2>
+                <p style="color: #d6d2d2; font-weight: bold;" class="fw-bold">To celebrate our launch, we'll be granting the wishes of 10 lucky people. To qualify, all you need to do is add an item to wishlist</p>
+                <div class="btn-wrap">
+                  <a href="{% url 'shop' %}" class="btn btn-light btn-light-arrow btn-medium d-flex align-items-center" tabindex="0">Make a wish <i class="icon icon-arrow-io"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" style="background-image: url('{% static 'images/iconic.jpg' %}');background-repeat: no-repeat;background-size: cover;background-position: center;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.2);"></div>
+        <div class="banner-content">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <h2 class="banner-title" style="color: #a5d326;">Timeless</h2>
+                <p style="color: #d6d2d2; font-weight: bold;" class="fw-bold">Embrace the nostalgia and relive the glory days on the pitch with our timeless collection of retro jerseys.</p>
+                <div class="btn-wrap">
+                  <a href="{% url 'shop' %}" class="btn btn-light btn-light-arrow btn-medium d-flex align-items-center" tabindex="0">Shop now <i class="icon icon-arrow-io"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="swiper-slide" style="background-image: url('{% static 'images/braden-hopkins-rlfCkv9YM2U-unsplash.jpg' %}');background-repeat: no-repeat;background-size: cover;background-position: center;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3);"></div>
+        <div class="banner-content">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <h2 class="banner-title" style="color: #a5d326;">Play With Style</h2>
+                <p style="color: #d6d2d2; font-weight: bold;" class="fw-bold">Who says you can't look good while doing hard things? Glide with style and unlock your full potential with our sports gear</p>
+                <div class="btn-wrap">
+                  <a href="shop.html" class="btn btn-light btn-light-arrow btn-medium d-flex align-items-center" tabindex="0">Shop now <i class="icon icon-arrow-io"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="swiper-slide" style="background-image: url('{% static 'images/simon-reza-YofQmnc-wns-unsplash.jpg' %}');background-repeat: no-repeat;background-size: cover;background-position: center;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3);"></div>        
+        <div class="banner-content">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <h2 class="banner-title" style="color: #a5d326;">Represent</h2>
+                <p style="color: #e6e6e6; font-weight: bold;">Merge style and team allegiance with our exclusive Jersey Collection. Elevate your look while showcasing your support for your favorite teams. Find the perfect blend of fashion and fandom in our trendy jerseys.</p>
+                <div class="btn-wrap">
+                  <a href="shop.html" class="btn btn-light btn-light-arrow btn-medium d-flex align-items-center" tabindex="0">Shop now <i class="icon icon-arrow-io"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<section id="featured-products" class="product-store padding-small">
+  <div class="container">
+    <div class="section-header d-flex flex-wrap align-items-center justify-content-between">
+      <h2 class="section-title">Latest Products</h2>            
+      <div class="btn-wrap">
+        <a href="{% url 'shop' %}" class="d-flex align-items-center">View all products <i class="icon icon icon-arrow-io"></i></a>
+      </div>
+    </div>
+    <div class="row">
+      {% for item in items %}
+        <div class="product-item col-lg-4 col-md-6 col-sm-6 product-rounded padding-small" id="{{item.id}}">
+          <div class="">
+            <div class="image-holder zoom-effect">
+              <img src="{{item.featured_image.url}}" alt="" class="image-rounded image-bg">
+            </div>
+            <div>
+              <h3 class="fw-bold" style="color: #2D2D2D;">{{item.name}}</h3>
+              <p class="text-muted" style="color: #2D2D2D;"><b>NGN{{item.price}}</b> <strike>NGN{{item.initial_price}}</strike></p>
+              <p style="color: #2D2D2D;">{{item.kit_type}} ({{item.season}})</p>
+              <!-- <p style="color: #2D2D2D;">5.0(10 Reviews)</p> -->
+              <hr>
+              <div>
+                <div class="d-flex">
+                  {% if item.stock == 0 %}                  
+                  <button class="btn btn-primary" disabled><i class="icon icon-shopping-cart"></i> Out of stock</a> 
+                  {% else %}
+                  <a href="{% url 'item_details' item.pk %}" class="btn btn-primary"><i class="icon icon-shopping-cart"></i> Add to Cart</a> 
+                  {% endif %}
+                </div>
+                {% if item.stock == 0 %}
+                <a href="{% url 'item_details' item.pk %}" class="btn btn-outline-dark"><i class="icon icon-chevron-right"></i> View this product</a>
+                {% else %}
+                <a href="{% url 'item_details' item.pk %}" class="btn btn-outline-dark"><i class="icon icon-chevron-right"></i> View this product</a>
+                {% endif %}  
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+
+
+<section id="latest-collection" style="padding-top: 50px;">
+  <div class="container">
+    <div class="product-collection row">
+      <div class="col-lg-7 col-md-12 left-content">
+        <div class="collection-item">
+          <div class="products-thumb">
+            <img src="{% static 'images/sono-bono-Sz0Sni8pQKc-unsplash.jpg' %}" alt="collection item" class="large-image image-rounded">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3);" class="large-image rounded"></div>        
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 product-entry">
+            <div class="categories" style="color: #d2d2d2;">Jersey Collection</div>
+            <h3 class="item-title" style="color: #d2d2d2;">Fan Favorite Jerseys</h3>
+            <p style="color: aliceblue;">Fuse fashion with team pride in our Jersey Collection. Elevate your style while supporting your team. Discover trendy jerseys for the ultimate fan statement.</p>
+            <div class="btn-wrap">
+              <a href="shop.html" class="d-flex align-items-center" style="color: rgb(233, 233, 233);">shop collection <i class="icon icon-arrow-io"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5 col-md-12 right-content flex-wrap">
+        <div class="collection-item top-item">
+          <div class="products-thumb">
+            <img src="{% static 'images/braden-hopkins-rlfCkv9YM2U-unsplash.jpg' %}" alt="collection item" class="small-image image-rounded img-fluid">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3);" class="large-image rounded"></div>        
+          </div>
+          <div class="col-md-6 product-entry">
+            <div class="categories" style="color: #d2d2d2;">Boot Collection</div>
+            <h3 class="item-title" style="color: #d2d2d2;">Soccer Boots</h3>
+            <p style="color: aliceblue;">Performance in Every Step</p>
+            <div class="btn-wrap">
+              <a href="shop.html" class="d-flex align-items-center" style="color: rgb(233, 233, 233);">shop collection <i class="icon icon-arrow-io"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="collection-item bottom-item">
+          <div class="products-thumb">
+            <img src="{% static 'images/connor-coyne-OgqWLzWRSaI-unsplash.jpg' %}" alt="collection item" class="small-image image-rounded">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3);" class="large-image rounded"></div>        
+          </div>
+          <div class="col-md-6 product-entry">
+            <div class="categories" style="color: #d2d2d2;">Equipment Collection</div>
+            <h3 class="item-title" style="color: #d2d2d2;">Sports Gear</h3>
+            <p style="color: aliceblue;">Elevate your game</p>
+            <div class="btn-wrap">
+              <a href="shop.html" class="d-flex align-items-center" style="color: rgb(233, 233, 233);">shop collection <i class="icon icon-arrow-io"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

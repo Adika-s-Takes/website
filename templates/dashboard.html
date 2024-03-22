@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="contact-information padding-small">
+  <div class="container">
+    <h2>Welcome aboard</h2>
+    <p>Hi Chief, welcome aboard Adikastakes, the biggest sports brand in Africa. Here at the Adikastakes store, your comfort and satisfaction is or number one priortity which is why we offer our goods at really affordable prices and also give you the option of customization with the jerseys you buy from us. You can take a tour of the store by selecting the category you want to shop in.</p>
+  <div class="row">
+      <div class="product-item col-lg-3 col-md-6 col-sm-6 padding-small product-rounded">
+          <div class="box">
+            <div class="image-holder zoom-effect">
+              <img src="{% static 'images/jersey (1).webp' %}" alt="" class="image-rounded image-bg">
+            </div>
+            <div>
+              <h3 class="fw-bold" style="color: #2D2D2D;">Football Kits</h3>
+              <p class="text-muted lead" style="color: #2D2D2D;"><b>Starting from</b> NGN9,000!!!!</p>
+              <p style="color: #2D2D2D;">2023/2024 Season</p>
+              <p style="color: #2D2D2D;" class="fw-bold">Over 100 Team Jerseys</p>
+              <hr>
+              <a href="{% url 'shop' %}?product_type=JERSEY" class="btn btn-primary"><i class="icon icon-shopping-cart"></i> Start Shopping</a>
+            </div>
+          </div>
+      </div>
+      <div class="product-item col-lg-3 col-md-6 col-sm-6 padding-small product-rounded">
+          <div class="box">
+            <div class="image-holder zoom-effect">
+              <img src="{% static 'images/retro_liverpool__2_-removebg-preview.png' %}" alt="" class="image-rounded image-bg">
+            </div>
+            <div>
+              <h3 class="fw-bold" style="color: #2D2D2D;">Retro Kits</h3>
+              <p class="text-muted" style="color: #2D2D2D;"><b>Starting from</b> NGN12,000!!!!</p>
+              <p style="color: #2D2D2D;">Blast from the past</p>
+              <p style="color: #2D2D2D;" class="fw-bold">Over 300 CUSTOMIZABLE Team Jerseys</p>
+              <hr>
+              <a href="{% url 'shop' %}?version=RETRO" class="btn btn-primary"><i class="icon icon-shopping-cart"></i> Start Shopping</a>
+            </div>
+          </div>
+      </div>
+      <div class="product-item col-lg-3 col-md-6 col-sm-6 padding-small product-rounded">
+          <div class="box">
+            <div class="image-holder zoom-effect">
+              <img src="{% static 'images/predator__1_-removebg-preview.png' %}" alt="" class="image-rounded image-bg">
+            </div>
+            <div>
+              <h3 class="fw-bold" style="color: #2D2D2D;">Soccer Cleats/Boots</h3>
+              <p class="text-muted" style="color: #2D2D2D;"><b>Starting from</b> NGN30,000!!!!</p>
+              <p style="color: #2D2D2D;">From; Adidas, Nike, Puma</p>
+              <p style="color: #2D2D2D;" class="fw-bold">Over 100 designs</p>
+              <hr>
+              <a href="{% url 'shop' %}?product_type=BOOTS" class="btn btn-primary"><i class="icon icon-shopping-cart"></i> Start Shopping</a>
+            </div>
+          </div>
+      </div>
+      <div class="product-item col-lg-3 col-md-6 col-sm-6 padding-small product-rounded">
+          <div class="box">
+            <div class="image-holder zoom-effect">
+              <img src="{% static 'images/ball_1.png' %}" alt="" class="image-rounded image-bg">
+            </div>
+            <div>
+              <h3 class="fw-bold" style="color: #2D2D2D;">Sports Equipment</h3>
+              <p class="text-muted" style="color: #2D2D2D;"><b>Starting from</b> NGN12,000!!!!</p>
+              <p style="color: #2D2D2D;">Balls, Gloves, Guards and more</p>
+              <p style="color: #2D2D2D;" class="fw-bold">Over 100 varieties</p>
+              <hr>
+              <a href="{% url 'shop' %}?product_type=EQUIPMENT" class="btn btn-primary"><i class="icon icon-shopping-cart"></i> Start Shopping</a>
+            </div>
+          </div>
+      </div>
+  </div>
+  </div>
+</section>
+{% endblock content %}

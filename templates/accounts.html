@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="contact-information padding-small">
+  <div class="container">
+    <h2>Welcome {{user}}</h2>
+    <p>Manage all of your account details from here. Things like shipping info, personal info as well as orders are all managed from here. Go ahead and take a look.</p>
+  <div class="row">
+    <div class="product-item col-lg-3 col-md-6 col-sm-6 padding-small product-rounded">
+        <div class="box">
+        <div class="image-holder zoom-effect">
+            <img src="{% static 'images/account_details.jpg' %}" alt="" class="image-rounded image-bg">
+        </div>
+        <div>
+            <h3 class="fw-bold" style="color: #2D2D2D;">Account Overview</h3>
+            <p class="text-muted lead" style="color: #2D2D2D;">Get an overview of your account here and see things like shipping addresses, recent orders and biodata</p>
+            <hr>
+            <a href="{% url 'account_info' %}" class="btn btn-primary">Account Info</a>
+        </div>
+        </div>
+    </div>
+    <div class="product-item col-lg-3 col-md-6 col-sm-6 padding-small product-rounded">
+        <div class="box">
+        <div class="image-holder zoom-effect">
+            <img src="{% static 'images/shipping_info.jpg' %}" alt="" class="image-rounded image-bg">
+        </div>
+        <div>
+            <h3 class="fw-bold" style="color: #2D2D2D;">Address Book</h3>
+            <p class="text-muted lead" style="color: #2D2D2D;">Your address book contains a list of addresses that you can use to receive shipments from us.</p>
+            <hr>
+            <a href="{% url 'shop' %}?product_type=JERSEY" class="btn btn-primary">Address Book</a>
+        </div>
+        </div>
+    </div>
+    <div class="product-item col-lg-3 col-md-6 col-sm-6 padding-small product-rounded">
+        <div class="box">
+        <div class="image-holder zoom-effect">
+            <img src="{% static 'images/history.jpg' %}" alt="" class="image-rounded image-bg">
+        </div>
+        <div>
+            <h3 class="fw-bold" style="color: #2D2D2D;">Order History</h3>
+            <p class="text-muted lead" style="color: #2D2D2D;">View all of the orders you made, track them and see their status. You can also leave a review while you're at it</p>
+            <hr>
+            <a href="{% url 'shop' %}?product_type=JERSEY" class="btn btn-primary">Order History</a>
+        </div>
+        </div>
+    </div>
+  </div>
+  </div>
+</section>
+{% endblock content %}

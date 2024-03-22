@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="padding-small">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+          <div class="zoom-effect">
+              <a href="#"><img src="https://brand.assets.adidas.com/image/upload/f_gif,fl_lossy,q_auto/originals_fw23_adicolor_green_hp_tcc_d_cfa6964ce8.gif" class="rounded-4 img-fluid d-none d-lg-block"></a>
+          </div>
+      </div>
+      <div class="col-md-6 align-self-center">
+        <div class="">
+          <div class="section-header">
+            <h2 class="section-title">Register</h2>
+            <p class="text-muted">Join the Adikastakes family today, we're always happy to have new people on-board</p>
+          </div>
+          <form name="contactform" method="post" class="contact-form">
+            {% csrf_token %}
+            <div class="form-item">
+              <input type="text" minlength="2" name="first_name" placeholder="First Name" class="u-full-width bg-light" required>
+              <input type="text" minlength="2" name="last_name" placeholder="Last Name" class="u-full-width bg-light" required>
+              <input type="text" minlength="2" name="username" placeholder="Username" class="u-full-width bg-light" required>
+              <input type="email" minlength="2" name="email" placeholder="Email Address" class="u-full-width bg-light" required>
+              <input type="password" name="pass" placeholder="Password" class="u-full-width bg-light" required>
+              <input type="password" name="pass2" placeholder="Confirm Password" class="u-full-width bg-light" required>
+            </div>
+            <label>
+              <input type="checkbox" required>
+              <span class="label-body">I agree all the <a href="#">terms and conditions</a>
+              </span>
+            </label>
+            <button type="submit" name="submit" class="btn btn-dark btn-full btn-medium">Sign Up</button>
+            <a name="submit" class="btn btn-outline-dark btn-full btn-medium"><i class="bi bi-google"></i>  Continue With Google</a>
+            <span class="label-body">Already a member? <a href="{% url 'login' %}">Log In</a></span>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

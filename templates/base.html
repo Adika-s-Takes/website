@@ -1,0 +1,265 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Adikastakes | {{title}}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="author" content="Adikastakes">
+    <meta name="keywords" content="">
+    <meta name="description" content="{{description}}">
+    <link rel="shortcut icon" href="{% static 'images/adika black.svg' %}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'icomoon/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-utilities.css' %}">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    <link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendor.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- script
+    ================================================== -->
+    <script src="{% static 'js/modernizr.js' %}"></script>
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
+  </head>
+  <body>
+
+    <div class="preloader-wrapper">
+      <div class="preloader">
+      </div>
+    </div>
+
+    <div class="search-popup">
+      <div class="search-popup-container">
+
+        <form role="search" method="get" class="search-form" action="">
+          <input type="search" id="search-form" class="search-field" placeholder="Type and press enter" value="" name="s" />
+          <button type="submit" class="search-submit"><a href="#"><i class="icon icon-search"></i></a></button>
+        </form>
+
+        <h5 class="cat-list-title">Browse Categories</h5>
+        
+        <ul class="cat-list">
+          <li class="cat-list-item">
+            <a href="shop.html" title="Men Jackets">Retro Kits</a>
+          </li>
+          <li class="cat-list-item">
+            <a href="shop.html" title="Fashion">Customizable Kits</a>
+          </li>
+          <li class="cat-list-item">
+            <a href="shop.html" title="Fashion">Home Kits</a>
+          </li>
+          <li class="cat-list-item">
+            <a href="shop.html" title="Casual Wears">Away Kits</a>
+          </li>
+          <li class="cat-list-item">
+            <a href="shop.html" title="Women">Third Kits</a>
+          </li>
+          <li class="cat-list-item">
+            <a href="shop.html" title="Trending">Baby Jerseys</a>
+          </li>
+          <li class="cat-list-item">
+            <a href="shop.html" title="Hoodie">Soccer Boots</a>
+          </li>
+          <li class="cat-list-item">
+            <a href="shop.html" title="Kids">Equipment</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <header id="header" class="shadow sticky-top bg-light">
+      <div id="header-wrap">
+        <nav class="secondary-nav border-bottom">
+          <div class="container-fluid">
+            <div class="row d-flex align-items-center justify-content-between"> <!-- Updated class added -->
+              <div class="col-md-4 header-contact">
+                <p>Let's talk! <strong>+234 90 2000 4244</strong></p>
+              </div>
+              <div class="col-md-4 col-sm-12 user-items text-start">
+                <ul class="d-flex justify-content-end list-unstyled mb-0"> <!-- Updated classes added -->
+                  <li>
+                    <a href="{% url 'account' %}"><i class="icon icon-user"></i></a>
+                  </li>
+                  <li>
+                    <a href="{% url 'cart' %}"><i class="icon icon-shopping-cart"></i>({{total_items_in_cart}})</a>
+                  </li>
+                  <li>
+                    <a href="wishlist.html"><i class="icon icon-heart"></i></a>
+                  </li>
+                  <li class="user-items search-item pe-3">
+                    <a href="#" class="search-button"><i class="icon icon-search"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+        
+        <nav class="primary-nav p-1">
+          <div class="container">
+            <div class="row d-flex align-items-center">
+              <div class="col-lg-2 col-md-2">
+                <div class="main-logo">
+                  <a href="{% url 'index' %}">
+                    <img src="{% static 'images/adika black.svg' %}" alt="logo" width="80" height="70">
+                  </a>
+                </div>
+              </div>
+              <div class="col-lg-10 col-md-10">
+                <div class="navbar">
+
+                  <div id="main-nav" class="stellarnav d-flex justify-content-end right">
+                    <ul class="menu-list">
+
+                      <li class="menu-item">
+                        <a href="{% url 'index' %}" class="item-anchor d-flex align-item-center {% if current_path == '/' %}active{% endif %}" data-effect="Home">Home</a>
+                      </li>
+
+                      <li><a href="{% url 'about' %}" class="item-anchor {% if current_path == '/about' %}active{% endif %}" data-effect="About">About</a></li>
+
+                      <li class="menu-item has-sub">
+                        <a href="#" class="item-anchor d-flex align-item-center {% if current_path == '/products/shop' %}active{% endif %}" data-effect="Shop">Shop<i class="icon icon-chevron-down"></i></a>
+                        <ul class="submenu">
+                          <li><a href="{% url 'shop' %}" class="item-anchor {% if current_path == '/products/shop' %}active{% endif %}">Shop</a></li>
+                          <li><a href="{% url 'cart' %}" class="item-anchor {% if current_path == '/products/cart' %}active{% endif %}">Cart</a></li>
+                          <li><a href="wishlist.html" class="item-anchor">Wishlist</a></li>
+                        </ul>
+                      </li>
+
+
+                      <!-- <li class="menu-item has-sub">
+                        <a href="blog.html" class="item-anchor d-flex align-item-center" data-effect="Blog">Blog<i class="icon icon-chevron-down"></i></a>
+                        <ul class="submenu">
+                          <li><a href="blog.html" class="item-anchor">Blog</a></li>
+                        </ul>
+                      </li> -->
+
+                      <li><a href="{% url 'contact' %}" class="item-anchor {% if current_path == '/contact' %}active{% endif %}" data-effect="Contact">Contact</a></li>
+
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    {% block content %}
+
+
+
+    {% endblock content %}
+
+    
+    <footer id="footer" class="mt-5" style="background: #dcdcdc; padding: 10px;">
+      <div class="container">
+        <div class="footer-menu-list">
+          <div class="row d-flex flex-wrap justify-content-between">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="footer-menu">
+                <h5 class="widget-title">Adikastakes</h5>
+                <ul class="menu-list list-unstyled">
+                  <li class="menu-item">
+                    <a href="about.html">About us</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="#">Conditions </a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="blog.html">Our Journals</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="#">Careers</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="#">Affiliate Programme</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="footer-menu">
+                <h5 class="widget-title">Customer Service</h5>
+                <ul class="menu-list list-unstyled">
+                  <li class="menu-item">
+                    <a href="faqs.html">FAQ</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="contact.html">Contact</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="#">Privacy Policy</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="#">Returns & Refunds</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="#">Cookie Guidelines</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="#">Delivery Information</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="footer-menu">
+                <h5 class="widget-title">Contact Us</h5>
+                <p>Do you have any questions or suggestions? <a href="#" class="email">adikawebservices@gmail.com</a>
+                </p>
+                <p>Do you need assistance? Give us a call. <br>
+                  <strong>+234 90 2000 4244</strong>
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="footer-menu">
+                <h5 class="widget-title">Your sports needs in one place</h5>
+                <p>Cras mattis sit ornare in metus eu amet adipiscing enim. Ullamcorper in orci, ultrices integer eget arcu. Consectetur leo dignissim lacus, lacus sagittis dictumst.</p>
+                <div class="social-links">
+                  <ul class="d-flex list-unstyled">
+                    <li>
+                      <a href="#">
+                        <i class="icon icon-facebook"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="icon icon-twitter"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="icon icon-youtube-play"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="icon icon-behance-square"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </footer>
+
+    <script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>

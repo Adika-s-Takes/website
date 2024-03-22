@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="contact-information padding-small">
+  <div class="container">
+    <div class="d-flex row align-items-center">
+      <div class="d-none d-lg-block col-md-6">
+          <div class="zoom-effect">
+              <a href="#"><img src="{% static 'images/techny-international-transportation-and-delivery-logistics.gif' %}" class="rounded-4 img-fluid"></a>
+          </div>
+      </div>
+      <div class="col-md-6 align-self-center">
+        <div class="contact-information">
+          <div class="section-header">
+            <h2 class="section-title">Add some shipping information</h2>
+            <p>Enter the deatils of where you'd like us to send all of your packages to.</p>
+          </div>
+          <form name="contactform" method="post" class="contact-form">
+            {% csrf_token %}
+            <div class="form-item">
+              <input type="text" minlength="2" name="house_number" placeholder="House/Apartment Number" class="u-full-width bg-light" required>
+              <input type="text" minlength="2" name="street_name" placeholder="Street Name" class="u-full-width bg-light" required>
+              <input type="text" minlength="2" name="phone_number" placeholder="Phone Number Ex: +23412345678" class="u-full-width bg-light" required>
+              <input type="text" minlength="2" name="address" placeholder="Address" class="u-full-width bg-light" required>
+              
+              <select onchange="updateCities(this);" name="country" id="country" class="form-control u-full-width">
+                <option value="" selected="selected">Select Country</option>
+                {% for country in countries %}
+                  <option value="{{ country.id }}">{{ country.name }}</option>
+                {% endfor %}
+              </select>
+              
+              <select name="city" id="city" class="form-control select-city u-full-width" required>
+                <option value="" selected="selected">Select City</option>
+              </select>
+
+            
+            </div>
+            <button type="submit" name="submit" class="btn btn-outline-dark btn-full btn-medium">Add Shipping Information</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function updateCities(select) {
+    var countryId = select.value;
+    var citiesDropdown = document.getElementById('city');
+
+    // Clear existing options
+    citiesDropdown.innerHTML = '<option value="" selected="selected">Select City</option>';
+
+    // Make AJAX request to fetch cities for the selected country
+    fetch('get_cities_by_country/' + countryId)
+      .then(response => response.json())
+      .then(data => {
+        if (data.hasOwnProperty('cities')) {
+          // Populate cities dropdown with fetched cities
+          data.cities.forEach(city => {
+            var option = document.createElement('option');
+            option.value = city.id;
+            option.textContent = city.name;
+            citiesDropdown.appendChild(option);
+          });
+        } else {
+          // Handle error response
+          console.error('Error fetching cities:', data.error);
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching cities:', error);
+      });
+  }
+</script>
+<script>
+  function updateLGAs(select) {
+    var cityId = select.value;
+    var lgasDropdown = document.getElementById('lga');
+
+    // Clear existing options
+    lgasDropdown.innerHTML = '<option value="" selected="selected">Select LGA</option>';
+
+    // Make AJAX request to fetch LGAs for the selected city
+    fetch('get_lgas_by_city/' + cityId)
+      .then(response => response.json())
+      .then(data => {
+        if (data.hasOwnProperty('lgas')) {
+          // Populate LGAs dropdown with fetched LGAs
+          data.lgas.forEach(lga => {
+            var option = document.createElement('option');
+            option.value = lga.id;
+            option.textContent = lga.name;
+            lgasDropdown.appendChild(option);
+          });
+        } else {
+          // Handle error response
+          console.error('Error fetching LGAs:', data.error);
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching LGAs:', error);
+      });
+  }
+</script>
+
+
+{% endblock content %}

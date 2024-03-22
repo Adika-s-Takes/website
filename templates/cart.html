@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load cart %}
+<section id="cart" class="cart">
+  <div class="container mt-3">
+    <h2>My cart</h2>
+    <p>Your shopping cart contains all the items you've selected for purchase. Review the items below and proceed to checkout when you're ready to complete your purchase.</p>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert broder rounded">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+      {{message}}
+    </div>
+    {% endfor %}
+    {% endif %}
+    <div class="row">
+      {% for size, items in grouped_items.items %}
+      {% for item_dict in items %}
+          <div class="product-item col-lg-4 col-md-6 col-sm-6 product-rounded padding-small">
+              <div class="">
+                  <div class="image-holder zoom-effect">
+                      <img src="{{ item_dict.item.featured_image.url }}" alt="" class="image-rounded image-bg">
+                  </div>
+                  <div>
+                      <h3 class="fw-bold" style="color: #2D2D2D;">{{ item_dict.item.name }} ({{size}})</h3>
+                      <p class="text-muted" style="color: #2D2D2D;"><b>NGN{{ item_dict.item.price }}</b> <strike>NGN14,000</strike></p>
+                      <p style="color: #2D2D2D;">{{ item_dict.kit_type }} (2023/2024)</p>
+                      {% if item_dict.name != None %}
+                      <p class="text-muted fw-bold">Custom Kit Info</p>
+                      <p style="color: #2D2D2D;">Name (On Jersey): {{item_dict.name}}</p>
+                      <p style="color: #2D2D2D;">Number (On Jersey): {{item_dict.number}}</p>
+                      {% endif %}
+                      <!-- <p style="color: #2D2D2D;">5.0 (10 Reviews)</p> -->
+                      <hr>
+                      <div class="d-flex">
+                          <form action="/products/cart#{{ item_dict.item.id }}" method="POST" class="me-2">
+                              {% csrf_token %}
+                              <input type="hidden" name="product" value="{{ item_dict.item.id }}">
+                              <input type="hidden" name="size" value="{{ size }}">
+                              <input type="hidden" name="remove" value="{{ item_dict.item.id }}">
+                              <button type="submit" class="btn btn-outline-primary">-</button>
+                          </form>
+                          <form action="/products/cart#{{ item_dict.item.id }}" method="POST">
+                              {% csrf_token %}
+                              <input type="hidden" name="product" value="{{ item_dict.item.id }}">
+                              <input type="hidden" name="size" value="{{ size }}">
+                              <button type="submit" class="btn btn-outline-primary">+</button>
+                          </form>
+                      </div>
+                      <button class="btn btn-primary" style="margin-top: -15px;"><i class="icon icon-shopping-cart"></i> {{ item_dict.quantity }} in Cart</button><br>
+                  </div>
+              </div>
+          </div>
+      {% endfor %}
+  {% endfor %}
+  
+    </div>
+    <hr>
+    <h4>Total: NGN{{ total_price_all_items }} (excluding shipping fees)</h4>
+    <a href="{% url 'checkout' %}" class="btn btn-primary"><i class="bi bi-chevron-double-right"></i> Proceed to checkout</a>
+    <a href="{% url 'shop' %}" class="btn btn-outline-dark"><i class="bi bi-cart"></i> Continue Shopping</a>
+  </div>
+</section>
+{% endblock content %}

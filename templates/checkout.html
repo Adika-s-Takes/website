@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load cart %}
+<section id="cart" class="cart">
+  <div class="container">
+    <h3>Checkout - Order Summary</h3>
+    <div class="row">
+      <div class="col-md-10">
+        <table class="table u-full-width">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for size, items in grouped_items.items %}
+              {% for item in items %}
+                <tr>
+                  <td>
+                    <div class="image-holder zoom-effect">
+                      <img src="{{ item.item.featured_image.url }}" alt="" class="image-rounded image-bg" width="150">
+                    </div>
+                  </td>
+                  <td>{{ item.item.name }} ({{size}})</td>
+                  <td>NGN{{ item.item.price }}</td>
+                  <td>{{ item.quantity }}</td>
+                  <td>NGN{{ item.total_price }}</td>
+                </tr>
+              {% endfor %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <form id="checkout-form" method="POST">
+      {% csrf_token %}
+      <h3>Where would you like us to ship?</h3>
+      {% for info in shipping_info %}
+      <div class="col-md-5">
+        <div class="shadow-none bg-transparent border border-secondary mb-3 p-3">
+          <input type="radio" name="shipping_address" id="shipping_address_{{ forloop.counter }}" value="{{ info.id }}" {% if forloop.first %}checked{% endif %}>
+          <label for="shipping_address_{{ forloop.counter }}">
+            <h5 class="card-title"><i class="bi bi-house"></i> {{ info.address }}</h5>
+            <p class="card-text">{{ info.city.name }}</p>
+            <p class="card-text">{{ info.country.name }}</p>
+            <p class="card-text">{{ info.phone_number }}</p>
+            <p class="card-text" id="shipping_price_{{ forloop.counter }}">Shipping Price: NGN{{ info.city.price }}</p>
+          </label>
+        </div>
+      </div>
+      {% endfor %}
+      <div class="row">
+        <div class="col-md-12">
+          <h3>Total: NGN<span id="total_price">{{ total_price }}</span></h3><h6>includes shipping and tax</h6>
+          <input type="hidden" name="public_key" value="FLWPUBK_TEST-220d9f57c019ff111e3f66cb4e71c091-X" />
+          <input type="hidden" name="tx_ref" value="{{ unique_reference }}" />
+          <input type="hidden" name="amount" value="{{ total_price }}" id="amount" />
+          <input type="hidden" name="currency" value="NGN"/>
+          <input type="hidden" name="redirect_url" value="https://google.com" />
+          <input type="hidden" name="customer[name]" value="{{ user.first_name }} {{ user.last_name }}" />
+          <input type="hidden" name="customer[email]" value="{{ user.email }}" />
+          <button type="submit" class="btn btn-dark"><i class="bi bi-chevron-double-right"></i> Checkout</button>
+        </div>
+      </div>
+    </form>
+    <a href="{% url 'shop' %}" class="btn btn-outline-dark"><i class="bi bi-cart"></i> Continue Shopping</a>
+  </div>
+</section>
+
+
+<script>
+  // Initialize the initial total price without shipping
+  var initialTotalPrice = parseFloat(document.getElementById('total_price').textContent.replace('NGN', ''));
+
+  // Function to update total price based on selected shipping location
+  function updateTotalPrice() {
+    // Get the selected shipping price
+    var shippingPrice = document.querySelector('input[name="shipping_address"]:checked').parentNode.querySelector('p[id^="shipping_price"]').textContent;
+    // Remove 'Shipping Price: NGN' from the text and parse the price
+    shippingPrice = parseFloat(shippingPrice.replace('Shipping Price: NGN', ''));
+
+    // Calculate the new total price by adding the shipping price to the initial total price
+    var totalPrice = initialTotalPrice + shippingPrice;
+
+    // Update the amount input field with the new total price
+    document.getElementById('amount').value = totalPrice.toFixed(2);
+
+    // Update the displayed total price
+    document.getElementById('total_price').textContent =+ totalPrice.toFixed(2);
+  }
+
+  // Add event listener to shipping address radio buttons
+  var shippingAddressRadios = document.querySelectorAll('input[name="shipping_address"]');
+  shippingAddressRadios.forEach(function(radio) {
+    radio.addEventListener('change', updateTotalPrice);
+  });
+
+  // Call the function initially to set the correct total price
+  updateTotalPrice();
+</script>
+
+
+<script>
+  // Attach event listener to form submit event
+  document.getElementById("checkout-form").addEventListener("submit", function(event) {
+    // Prevent default form submission
+    event.preventDefault();
+    
+    // Serialize form data
+    var formData = new FormData(this);
+    
+    // Make AJAX POST request
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/products/checkout", true);
+    xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          // Handle success response
+          console.log("Form submitted successfully");
+          // Initiate payment process
+          makePayment();
+        } else {
+          // Handle error response
+          console.error("Error submitting form:", xhr.status);
+        }
+      }
+    };
+    xhr.send(formData);
+  });
+
+  // Function to initiate payment
+  function makePayment() {
+    var totalPrice = parseFloat(document.getElementById('total_price').textContent.replace('NGN', ''));
+    FlutterwaveCheckout({
+      public_key: "FLWPUBK_TEST-220d9f57c019ff111e3f66cb4e71c091-X",
+      tx_ref: "{{unique_reference}}",
+      amount: totalPrice.toFixed(2),
+      currency: "NGN",
+      redirect_url: "https://fmrcnx65-8000.uks1.devtunnels.ms/thank-you",
+      customer: {
+        email: "{{user.email}}",
+        name: "{{user.first_name}}, {{user.last_name}}",
+      },
+      callback: function(response) {
+        console.log("Payment Callback:", response);
+        // You can handle the payment response here if needed
+      }
+    });
+  }
+</script>
+{% endblock content %}

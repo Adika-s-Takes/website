@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section id="thank-you" class="padding-large bg-light-grey">
+  <div class="container">
+    <div class="row">
+      <div class="page-header col-md-6">
+        <div class="section-header">
+          <h1 class="page-title">Thank You!</h1>
+          <p>Our team will get back to you as soon as possible.</p>
+          <p>In the meantime, you can go ahead and feed your eyes or even make a couple more purchases. </p>
+          <p>You can track your order from <a href="#">here</a></p>
+          <a href="{% url 'shop' %}" class="btn btn-primary"><i class="bi bi-shopping-cart"></i> Continue Shopping</a>
+        </div>
+      </div>
+      <div class="contact-information">
+        <div class="col-md-6">
+          <div class="section-header">
+            <h2 class="section-title">Get in touch</h2>
+          </div>
+          <div class="row">
+            <div class="d-flex flex-wrap bg-light">
+              <div class="col-md-6 border-right border-bottom">
+                <div class="detail">
+                  <h3>Phones</h3>
+                  <ul class="list-unstyled">
+                    <li>
+                      <i class="icon icon-phone"></i>+2349020004244
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-6 border-bottom">
+                <div class="detail">
+                  <h3>Emails</h3>
+                  <ul class="list-unstyled">
+                    <li>
+                      <i class="icon icon-envelope"></i>
+                      <a href="mailto:info@yourcompany.com">adikawebservices@gmail.com</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-6 border-right">
+                <div class="address detail">
+                  <h3>Address</h3>
+                  <ul class="list-unstyled">
+                    <li>
+                      <i class="icon icon-location"></i>
+                      <span>Lagos, Nigeria</span><br>
+                      <span>Kaduna, Nigeria</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="detail">
+                  <h3>Social Links</h3>
+                  <ul class="social-links list-unstyled d-flex">
+                    <li><a href="#" class="icon icon-facebook"></a></li>
+                    <li><a href="#" class="icon icon-twitter"></a></li>
+                    <li><a href="#" class="icon icon-youtube-play"></a></li>
+                    <li><a href="#" class="icon icon-behance-square"></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+{% endblock content %}

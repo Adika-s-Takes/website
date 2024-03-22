@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<section class="padding-small">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+          <div class="zoom-effect">
+              <img src="https://brand.assets.adidas.com/image/upload/f_gif,fl_lossy,q_auto/originals_fw23_adicolor_green_hp_tcc_d_cfa6964ce8.gif" class="rounded-4 img-fluid d-none d-lg-block">
+          </div>
+      </div>
+      <div class="col-md-6">
+        <div class="">
+          <div class="section-header">
+            <h2 class="section-title">Login</h2>
+            <p>Beautiful day, isn't it? Login to continue shopping</p>
+          </div>
+          <form name="contactform" method="post" class="contact-form">
+            {% csrf_token %}
+            <div class="form-item">
+              <input type="text" minlength="2" name="username" placeholder="Username" class="u-full-width bg-light" required>
+              <input type="password" name="password" placeholder="Password" class="u-full-width bg-light" required>
+            </div>
+            <!-- <label>
+              <input type="checkbox" required>
+              <span class="label-body">I agree all the <a href="#">terms and conditions</a>
+              </span>
+            </label> -->
+            <button type="submit" name="submit" class="btn btn-dark btn-full btn-medium">Login</button>
+            <a name="submit" class="btn btn-outline-dark btn-full btn-medium"><i class="bi bi-google"></i>  Continue with Google</a>
+            <span class="label-body">New here? <a href="{% url 'register' %}">Sign up</a></span>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

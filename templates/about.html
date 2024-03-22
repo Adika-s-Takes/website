@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section id="about-us" class="padding-small">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 col-md-12 col-sm-12">
+        <div class="image-holder">
+          <img src="{% static 'images/upscald.jpg' %}" alt="single" class="rounded-3">
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+        <div class="">
+          <div class="display-header">
+            <h2 class="section-title">How was 'Adikastakes' started?</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis unde, culpa ducimus optio repellat et ullam. Laudantium quidem eius, blanditiis similique atque aut eum libero vitae perspiciatis? Perspiciatis unde amet repellendus itaque, iure nam atque laudantium laboriosam aspernatur, voluptate labore quos, nesciunt error et pariatur qui velit ipsa. Commodi, magnam.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro voluptates error sequi repellendus eum, officia et saepe omnis atque iste laudantium commodi, consequatur id quo ipsum, alias voluptatum modi expedita.</p>
+            <div class="btn-wrap">
+              <a href="{% url 'shop' %}" class="btn btn-dark btn-medium d-flex align-items-center" tabindex="0">Shop our store<i class="icon icon-arrow-io"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" class="padding-small">
+  <div class="container">
+    <div class="reviews-content">
+      <div class="row d-flex flex-wrap">
+        <div class="col-md-2">
+          <div class="review-icon">
+            <i class="icon icon-right-quote"></i>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="swiper testimonial-swiper overflow-hidden">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="testimonial-detail">
+                  <p>“A creative mind is a fertile land for growth”</p>
+                  <div class="author-detail">
+                    <div class="name">Bola Ahmed Tinubu</div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="testimonial-detail">
+                  <p>“If you know the enemy and know yourself you need not fear the results of a hundred battles.”</p>
+                  <div class="author-detail">
+                    <div class="name">Sun Tzu</div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="testimonial-detail">
+                  <p>“When loves beckons unto you, follow”</p>
+                  <div class="author-detail">
+                    <div class="name">Khalil Gibran</div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="testimonial-detail">
+                  <p>“Be the best at whatever you do :)”</p>
+                  <div class="author-detail">
+                    <div class="name">Me</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-arrows">
+            <button class="prev-button">
+              <i class="icon icon-arrow-left"></i>
+            </button>
+            <button class="next-button">
+              <i class="icon icon-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

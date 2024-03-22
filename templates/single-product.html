@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section id="product-single" class="product-single padding-small">
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-7">
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert border border-1 rounded u-full-width p-3">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                {{message}}
+                <p>You can choose to <a href="{% url 'checkout' %}">checkout</a> or continue shopping</p>
+              </div>
+            {% endfor %}
+          {% endif %}
+
+          <div class="swiper mySwiper2">
+            <div class="swiper-wrapper">
+              {% for product_image in product_images %}
+              <div class="swiper-slide">
+                <img src="{{ product_image.image.url }}" alt="{{ product_image.product.name }}" height="100"/>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="swiper mySwiper mt-2">
+            <div class="swiper-wrapper">
+              {% for product_image in product_images %}
+              <div class="swiper-slide">
+                <img src="{{ product_image.image.url }}" alt="{{ product_image.product.name }}" height="100"/>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <!-- {% for tag in item.product_tags.all %}
+          <button class="btn btn-small btn-outline-primary mt-4">{{tag}}</button>
+          {% endfor %} -->
+
+
+        </div>
+        <div class="col-lg-5">
+          <div class="">
+            <div class="">
+              <div class="">
+                <div class="contact-information">
+                  <div class="section-header">
+                    <h2 class="section-title">{{item.name}}</h2>
+                    <h4 class="text-muted">NGN{{item.price}}</h4>
+                    <h6 class="text-muted">{{item.kit_type}} {{item.season}}</h6>
+                    <p class="text-sm" style="color: green;">In Stock</p>
+                  </div>
+                  <div>
+                    <form action="/products/item/{{item.id}}#" method="POST">
+                      {% csrf_token %}
+                      <p>{{item.description}}</p>
+                      {% if item.customizable == True %}
+                      <input type="number" name="number" min="1" class="u-full-width me-3" placeholder="Jersey Number:EX; 10">
+                      <input type="text" name="name" class="u-full-width me-3" placeholder="Name on Jersey: Ex; Messi">
+                      {% endif %}
+                      <div class="form-item d-flex">
+                        <input type="text" hidden name="product" value="{{item.id}}">
+                        <input type="number" name="quantity" value="1" min="1" class="u-quarter-width me-3" placeholder="quantity">
+                        <input type="hidden" name="remove">
+                        <select name="size" class="u-full-width">
+                          {% for size in available_sizes %}
+                          <option value="{{ size.size }}">{{ size.size }}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+                      <p><b><i class="bi bi-truck fw-bold"></i> Shipping:</b> Usually ships out within two business days</p>
+                      {% if item.stock == 0 %}
+                      <button type="button" name="submit" class="btn btn-dark btn-full btn-medium" disabled><i class="icon icon-shopping-cart" disabled></i> OUT OF STOCK</button>
+                      {% else %}
+                      <button type="submit" name="submit" class="btn btn-dark btn-full btn-medium"><i class="icon icon-shopping-cart"></i> Add to Cart</button>
+                      {% endif %}
+                    </form>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="">
+      <div class="row">
+        <div class="col-12">
+          <div class="bootstrap-tabs">
+            <nav>
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="false">Item Description</button>
+                <button class="nav-link active" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="true">Details</button>
+                <!-- <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Reviews</button> -->
+              </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+              <div class="tab-pane fade " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <p style="color: #2D2D2D;" class="">{{item.description}}</P>
+              </div>
+              <div class="tab-pane fade active show" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <ul class="" style="color: #2D2D2D;">
+                  <li>Product ID: {{item.id}}</li>
+                  {% for product_detail in product_details %}
+                  <li>{{product_detail.detail}}</li>
+                  {% endfor %}
+                </ul>                  
+              </div>
+              <!-- <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section id="featured-products" class="product-store p-2">
+  <div class="container">
+    <div class="section-header d-flex flex-wrap align-items-center justify-content-between">
+      <h2 class="section-title">You may also like...</h2>        
+      <div class="btn-wrap">
+        <a href="shop.html" class="d-flex align-items-center">View all products <i class="icon icon icon-arrow-io"></i></a>
+      </div>            
+    </div>
+    <div class="row">
+      {% for item in related_items %}
+        <div class="product-item col-lg-4 col-md-6 col-sm-6 product-rounded padding-small" id="{{item.id}}">
+          <div class="">
+            <div class="image-holder zoom-effect">
+              <img src="{{item.featured_image.url}}" alt="" class="image-rounded image-bg">
+            </div>
+            <div>
+              <h3 class="fw-bold" style="color: #2D2D2D;">{{item.name}}</h3>
+              <p class="text-muted" style="color: #2D2D2D;"><b>NGN{{item.price}}</b> <strike>NGN{{item.initial_price}}</strike></p>
+              <p style="color: #2D2D2D;">{{item.kit_type}} ({{item.season}})</p>
+              <!-- <p style="color: #2D2D2D;">5.0(10 Reviews)</p> -->
+              <hr>
+              <div>
+                <div class="d-flex">
+                  {% if item.stock == 0 %}                  
+                  <button class="btn btn-primary" disabled><i class="icon icon-shopping-cart"></i> Out of stock</a> 
+                  {% else %}
+                  <a href="{% url 'item_details' item.pk %}" class="btn btn-primary"><i class="icon icon-shopping-cart"></i> Add to Cart</a> 
+                  {% endif %}
+                </div>
+                {% if item.stock == 0 %}
+                <a href="{% url 'item_details' item.pk %}" class="btn btn-outline-dark"><i class="icon icon-chevron-right"></i> View this product</a>
+                {% else %}
+                <a href="{% url 'item_details' item.pk %}" class="btn btn-outline-dark"><i class="icon icon-chevron-right"></i> View this product</a>
+                {% endif %}  
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    loop: true,
+    spaceBetween: 10,
+    slidesPerView: 4,
+    freeMode: true,
+    watchSlidesProgress: true,
+  });
+  var swiper2 = new Swiper(".mySwiper2", {
+    loop: true,
+    autoplay: {
+      delay: 2000, // Delay between transitions in milliseconds (ms)
+      disableOnInteraction: false, // Set to false if you want to keep autoplaying even when the user interacts with the swiper
+    },
+    spaceBetween: 10,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    thumbs: {
+      swiper: swiper,
+    },
+  });
+</script>
+{% endblock content %}
+
