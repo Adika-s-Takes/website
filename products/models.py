@@ -22,7 +22,7 @@ PRODUCT_TYPE = (
 KIT_TYPE = (
     ("HOME", "Home Kit"),
     ("AWAY", "Away Kit"),
-    ("THIRD", "Away Kit"),
+    ("THIRD", "Third Kit"),
 )
 
 VERSION = (
@@ -42,14 +42,14 @@ class ProductTag(models.Model):
 
     def __str__(self):
         return self.tag
-    
+
 
 class Size(models.Model):
     size = models.CharField(max_length=300)
 
     def __str__(self):
         return self.size
-            
+
 class Item(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True)
     name = models.CharField(max_length=300)
@@ -70,11 +70,11 @@ class Item(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     @staticmethod
     def get_products_by_id(ids):
         return Item.objects.filter (id__in=ids)
-    
+
 class ProductReview(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE, null=True)
     reviewer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
@@ -83,7 +83,7 @@ class ProductReview(models.Model):
 
     def __str__(self):
         return f"{self.reviewer.username}"
-    
+
 STATUS = (
     ("ORDER PLACED", "ORDER PLACED"),
     ("SHIPPED", "SHIPPED"),
