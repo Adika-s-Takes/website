@@ -175,6 +175,10 @@ else:
     EMAIL_HOST_USER = env('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
+SECURE_SSL_REDIRECT = True
+
+MEDIA_ROOT = os.path.join(BASE_DIR / '/home/adikasstakes/mysite/media/')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
