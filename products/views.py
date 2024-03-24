@@ -1,6 +1,5 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from collections import defaultdict
-from django.http import HttpResponseRedirect
 from .models import Item, ProductImage, ProductDetail, Order, ProductReview
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
@@ -8,6 +7,9 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import uuid
 from accounts.models import ShippingInfo
 from django.contrib import messages
+from django.db.models import Case, When, Value, IntegerField, Count
+from django.db.models.functions import Length
+from fuzzywuzzy import fuzz
 
 # @login_required
 def shop(request):
@@ -75,7 +77,7 @@ def item_details(request, pk):
         size = request.POST.get('size')
         name = request.POST.get('name')  # New field for the name on the jersey
         number = request.POST.get('number')  # New field for the number on the jersey
-        quantity = int(request.POST.get('quantity', 1)) 
+        quantity = int(request.POST.get('quantity', 1))
         remove = request.POST.get('remove')
 
         # Update the cart with the specified quantity
@@ -105,18 +107,20 @@ def item_details(request, pk):
         request.session['cart'] = cart
 
 
-    
+
     item = Item.objects.get(id=pk)
     product_images = ProductImage.objects.filter(product=item)
     product_details = ProductDetail.objects.filter(product=item)
     cart = request.session.get('cart', {})
     related_items = Item.objects.filter(
-        Q(league=item.league) |
-        Q(type=item.type) |
-        Q(kit_type=item.kit_type) |
-        Q(version=item.version) |
-        Q(season=item.season)
-    ).exclude(id=pk)[:4]
+        league=item.league,
+    ).exclude(id=pk)
+
+    # Filter items based on fuzzy string matching
+    related_items = [related_item for related_item in related_items if fuzz.ratio(item.name, related_item.name) >= 60]
+
+    # Limit the queryset to 10 related items
+    related_items = related_items[:10]
 
     # Rename loop variable from 'item' to 'related_item'
     for related_item in related_items:
@@ -125,11 +129,11 @@ def item_details(request, pk):
     item.quantity_in_cart = cart.get(str(item.id), 0)
 
 
-    try: 
+    try:
         total_quantity_in_cart = sum(sum(details['quantity'] for details in sizes.values()) for sizes in cart.values())
     except Exception:
         total_quantity_in_cart = 0
-    
+
     available_sizes = item.sizes.all()
 
     context = {
@@ -292,7 +296,7 @@ def checkout(request):
                     name=details['name'],
                     number=details['number'],
                 )
-    
+
     return render(request, 'checkout.html', context)
 
 def review(request, pk):
