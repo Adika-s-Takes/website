@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 
 def index(request):
-    items = Item.objects.filter(active=True)[:10]
+    items = Item.objects.filter(active=True)[:6]
     drips = DripGuide.objects.filter(active=True)
     cart = request.session.get('cart', {})
     try: 
