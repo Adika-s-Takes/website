@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-=91-s@1!jyv-l2!(rq$=b4p7c5dl8l9)0@jf(qm=)xdztu)o@0
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -91,12 +91,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'adikastakes.wsgi.application'
 
-# if DEBUG == False:
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': env('CLOUD_NAME'),
-    'API_KEY': env('API_KEY'),
-    'API_SECRET': env('API_SECRET'),
-}
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -174,7 +168,7 @@ else:
     EMAIL_HOST_USER = env('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
-SECURE_SSL_REDIRECT = True
+# SECURE_SSL_REDIRECT = True
 
 MEDIA_ROOT = os.path.join(BASE_DIR / '/home/adikasstakes/mysite/media/')
 
