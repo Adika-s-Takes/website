@@ -100,9 +100,9 @@
       </div>
     </div>
     <div class="row">
-      {% for item in items %}
-      <div class="swiper main-swiper">
+      <div class="swiper mySwiper">
         <div class="swiper-wrapper">
+          {% for item in items %}
           <div class="swiper-slide product-item col-lg-4 col-md-6 col-sm-6 product-rounded padding-small" id="{{item.id}}">
             <div class="">
               <div class="image-holder zoom-effect">
@@ -131,11 +131,11 @@
               </div>
             </div>
           </div>
+          {% endfor %}
         </div>
       </div>
-      {% endfor %}
     </div>
-    <div class="swiper-pagination"></div>
+    <!-- <div class="swiper-pagination"></div> -->
   </div>
 </section>
 
