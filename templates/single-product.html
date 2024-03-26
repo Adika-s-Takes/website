@@ -124,7 +124,7 @@
     <div class="section-header d-flex flex-wrap align-items-center justify-content-between">
       <h2 class="section-title">You may also like...</h2>        
       <div class="btn-wrap">
-        <a href="shop.html" class="d-flex align-items-center">View all products <i class="icon icon icon-arrow-io"></i></a>
+        <a href="{% url 'shop' %}" class="d-flex align-items-center">View all products <i class="icon icon icon-arrow-io"></i></a>
       </div>            
     </div>
     <div class="row">
@@ -162,6 +162,7 @@
     <div class="swiper-pagination"></div>
   </div>
 </section>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
   var swiper = new Swiper(".mySwiper", {
     loop: true,
