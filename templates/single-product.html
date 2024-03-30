@@ -20,7 +20,6 @@
               {% for product_image in product_images %}
               <div class="swiper-slide">
                 <a href="{{ product_image.image.url }}" class="glightbox" data-glightbox="gallery-carousel height: auto; zoomable: true; draggable: true;"><img src="{{ product_image.image.url }}" alt="{{ product_image.product.name }}"/></a>
-                <img src="{{ product_image.image.url }}" alt="{{ product_image.product.name }}" height="100"/>
               </div>
               {% endfor %}
             </div>
@@ -31,7 +30,6 @@
               {% for product_image in product_images %}
               <div class="swiper-slide">
                 <a href="{{ product_image.image.url }}" class="glightbox" data-glightbox="gallery-carousel height: auto; zoomable: true; draggable: true;"><img src="{{ product_image.image.url }}" alt="{{ product_image.product.name }}"/></a>
-                <img src="{{ product_image.image.url }}" alt="{{ product_image.product.name }}" height="100"/>
               </div>
               {% endfor %}
             </div>
@@ -46,7 +44,7 @@
               <div class="">
                 <div class="contact-information">
                   <div class="section-header">
-                    <h2 class="section-title">{{item.name}}</h2>
+                    <h3 class="section-title">{{item.name}}</h3>
                     <h4 class="text-muted">NGN{{item.price}}</h4>
                     <h6 class="text-muted">{{item.kit_type}} {{item.season}}</h6>
                     <p class="text-sm" style="color: green;">In Stock</p>
