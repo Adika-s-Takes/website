@@ -19,6 +19,7 @@
             <div class="swiper-wrapper">
               {% for product_image in product_images %}
               <div class="swiper-slide">
+                <a href="{{ product_image.image.url }}" class="glightbox" data-glightbox="height: auto; zoomable: true; draggable: true;"></a>
                 <img src="{{ product_image.image.url }}" alt="{{ product_image.product.name }}" height="100"/>
               </div>
               {% endfor %}
@@ -29,6 +30,7 @@
             <div class="swiper-wrapper">
               {% for product_image in product_images %}
               <div class="swiper-slide">
+                <a href="{{ product_image.image.url }}" class="glightbox" data-glightbox="height: auto; zoomable: true; draggable: true;"></a>
                 <img src="{{ product_image.image.url }}" alt="{{ product_image.product.name }}" height="100"/>
               </div>
               {% endfor %}
@@ -37,8 +39,6 @@
           <!-- {% for tag in item.product_tags.all %}
           <button class="btn btn-small btn-outline-primary mt-4">{{tag}}</button>
           {% endfor %} -->
-
-
         </div>
         <div class="col-lg-5">
           <div class="">
