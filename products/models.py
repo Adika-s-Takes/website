@@ -17,6 +17,8 @@ PRODUCT_TYPE = (
     ("JERSEY", "JERSEY"),
     ("BOOTS", "BOOTS"),
     ("EQUIPMENT", "EQUIPMENT"),
+    ("POLO", "POLO"),
+    ("BABY KIT", "BABY KIT"),
 )
 
 KIT_TYPE = (
