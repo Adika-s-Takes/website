@@ -172,6 +172,31 @@ else:
 
 MEDIA_ROOT = os.path.join(BASE_DIR / '/home/adikasstakes/mysite/media/')
 
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Adika's Takes Site Administration",
+
+    "site_header": "Adika's Takes",
+
+    "site_brand": "Adika's Takes",
+
+    "site_logo": "images/adika black.svg",
+
+    # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
+    "login_logo": "images/adika black.svg",
+
+    # Logo to use for login form in dark themes (defaults to login_logo)
+    "login_logo_dark": "images/adika black.svg",
+
+    "site_logo_classes": "img-circle",
+
+    "copyright": "Adika's Takes",
+
+    "show_sidebar": True,
+
+    "language_chooser": True,
+}
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
