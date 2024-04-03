@@ -105,9 +105,11 @@
           {% for item in items %}
           <div class="product-item col-lg-4 col-md-6 col-sm-6 padding-small mt-2" id="{{item.id}}">
             <div class="">
-              <div class="image-holder zoom-effect">
-                <a href="{% url 'item_details' item.pk %}"><img src="{{item.featured_image.url}}" alt="" class="image-rounded image-bg"></a>
-              </div>
+              <a href="{% url 'item_details' item.pk %}">
+                <div class="image-holder zoom-effect">
+                  <a href="{% url 'item_details' item.pk %}"><img src="{{item.featured_image.url}}" alt="" class="image-rounded image-bg"></a>
+                </div>
+              </a>
               <div>
                 <a href="{% url 'item_details' item.pk %}"><h3 class="fw-bold" style="color: #2D2D2D;">{{item.name}}</h3></a>
                 <p class="text-muted" style="color: #2D2D2D;"><b>NGN{{item.price}}</b> <strike>NGN{{item.initial_price}}</strike></p>
