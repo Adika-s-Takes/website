@@ -32,14 +32,13 @@
           </div>
           {% for item in items %}
           <div class="product-item col-lg-4 col-md-6 col-sm-6 padding-small mt-2" id="{{item.id}}">
+            <a href="{% url 'item_details' item.pk %}">
             <div class="">
-              <a href="{% url 'item_details' item.pk %}">
-                <div class="image-holder zoom-effect">
-                  <a href="{% url 'item_details' item.pk %}"><img src="{{item.featured_image.url}}" alt="" class="image-rounded image-bg"></a>
-                </div>
-              </a>
+              <div class="image-holder zoom-effect">
+                <img src="{{item.featured_image.url}}" alt="" class="image-rounded image-bg">
+              </div>
               <div>
-                <a href="{% url 'item_details' item.pk %}"><h3 class="fw-bold" style="color: #2D2D2D;">{{item.name}}</h3></a>
+                <h3 class="fw-bold" style="color: #2D2D2D;">{{item.name}}</h3>
                 <p class="text-muted" style="color: #2D2D2D;"><b>NGN{{item.price}}</b> <strike>NGN{{item.initial_price}}</strike></p>
                 <p style="color: #2D2D2D;">{{item.kit_type}} ({{item.season}})</p>
                 <!-- <p style="color: #2D2D2D;">5.0(10 Reviews)</p> -->
@@ -60,6 +59,7 @@
                 </div>
               </div>
             </div>
+            </a>
           </div>
           {% endfor %}
         </div>
