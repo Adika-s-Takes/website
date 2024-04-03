@@ -115,8 +115,8 @@ CSS STRUCTURE:
  */
 @media screen and (max-width: 600px) {
     :root {
-        --header-height : 70px;
-        --header-height-min   : 80px;
+        --header-height : 50px;
+        --header-height-min   : 50px;
     }
 }
 /* Theme Colors */
