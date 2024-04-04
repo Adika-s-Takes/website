@@ -195,7 +195,6 @@ JAZZMIN_SETTINGS = {
 
     "show_sidebar": True,
 
-    "language_chooser": True,
 }
 
 # Default primary key field type
