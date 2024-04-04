@@ -22,14 +22,14 @@
 <div class="">
   <div class="container">
 
-    <section id="" class="">
+    <section id="selling-products" class="product-store">
       <div class="">
         <h2><i>Beyond Infinity</i></h2>
         <p>As Nigeria's biggest sports vendor, our products cuts far and wide across all of the</p>
         <div class="border-bottom">
           <button class="btn btn-outline-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasStart" aria-controls="offcanvasStart">Filter & Sort <i class="bi bi-sliders"></i></button>
         </div>
-        <div class="row">
+        <div class="row d-flex">
           {% for item in items %}
           <div class="product-item col-lg-4 col-md-6 col-sm-6 padding-small mb-3 d-flex" id="{{item.id}}">
             <a href="{% url 'item_details' item.pk %}">
