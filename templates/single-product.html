@@ -71,10 +71,13 @@
                           {% endfor %}
                         </select>
                       </div>
-                      {% if item.custom_item_link %}
-                      <a href="{{item.custom_item_link}}#form" class="btn btn-primary">Customize</a> 
-                      {% endif %}
+                      
                       <p><b><i class="bi bi-truck fw-bold"></i> Shipping:</b> Usually ships out within two business days</p>
+                      {% if item.custom_item_link %}
+                      <div>
+                        <a href="{{item.custom_item_link}}#form" class="btn btn-primary">Customize</a> 
+                      </div>
+                      {% endif %}
                       {% if item.stock == 0 %}
                       <button type="button" name="submit" class="btn btn-dark btn-full btn-medium" disabled><i class="icon icon-shopping-cart" disabled></i> OUT OF STOCK</button>
                       {% else %}
@@ -134,7 +137,7 @@
     </div>
     <div class="row">
       {% for item in related_items %}
-        <div class="product-item col-lg-4 col-md-6 col-sm-6 padding-small mt-2" id="{{item.id}}">
+        <div class="col-lg-4 col-md-6 col-sm-6 padding-small mt-2" id="{{item.id}}">
           <a href="{% url 'item_details' item.pk %}">
           <div class="">
             <div class="image-holder zoom-effect">
