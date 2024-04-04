@@ -31,13 +31,13 @@
             <button class="btn btn-outline-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasStart" aria-controls="offcanvasStart">Filter & Sort <i class="bi bi-sliders"></i></button>
           </div>
           {% for item in items %}
-          <div class="product-item box col-lg-4 col-md-6 col-sm-6 padding-small mt-2" id="{{item.id}}">
+          <div class="product-item h-100 box col-lg-4 col-md-6 col-sm-6 padding-small mt-2" id="{{item.id}}">
             <a href="{% url 'item_details' item.pk %}">
             <div class="box">
               <div class="image-holder zoom-effect">
                 <img src="{{item.featured_image.url}}" alt="" class="image-rounded image-bg">
               </div>
-              <div class="">
+              <div class="d-flex flex-column">
                 <h4 class="fw-bold" style="color: #2D2D2D;">{{item.name}}</h4>
                 <p class="text-muted" style="color: #2D2D2D;"><b>NGN{{item.price}}</b> <strike>NGN{{item.initial_price}}</strike></p>
                 <p style="color: #2D2D2D;">{{item.kit_type}} ({{item.season}})</p>
