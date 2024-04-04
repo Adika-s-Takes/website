@@ -55,28 +55,22 @@
         
         <ul class="cat-list">
           <li class="cat-list-item">
-            <a href="shop.html" title="Men Jackets">Retro Kits</a>
+            <a href="{% url 'shop' %}?version=RETRO" title="Retro Kits">Retro Kits</a>
           </li>
           <li class="cat-list-item">
-            <a href="shop.html" title="Fashion">Customizable Kits</a>
+            <a href="{% url 'shop' %}?customizable" title="Customizable Kits">Customizable Kits</a>
           </li>
           <li class="cat-list-item">
-            <a href="shop.html" title="Fashion">Home Kits</a>
+            <a href="{% url 'shop' %}?kit_type=HOME" title="Home Kits">Home Kits</a>
           </li>
           <li class="cat-list-item">
-            <a href="shop.html" title="Casual Wears">Away Kits</a>
+            <a href="{% url 'shop' %}?kit_type=AWAY" title="Away Kits">Away Kits</a>
           </li>
           <li class="cat-list-item">
-            <a href="shop.html" title="Women">Third Kits</a>
+            <a href="{% url 'shop' %}?kit_type=THIRD" title="Third Hits">Third Kits</a>
           </li>
           <li class="cat-list-item">
-            <a href="shop.html" title="Trending">Baby Jerseys</a>
-          </li>
-          <li class="cat-list-item">
-            <a href="shop.html" title="Hoodie">Soccer Boots</a>
-          </li>
-          <li class="cat-list-item">
-            <a href="shop.html" title="Kids">Equipment</a>
+            <a href="{% url 'shop' %}?product_type=BABY KIT" title="Baby Kits">Baby Jerseys</a>
           </li>
         </ul>
       </div>

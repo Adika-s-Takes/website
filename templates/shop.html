@@ -68,7 +68,7 @@
       </section>
       <div class="">
         <nav aria-label="Page navigation">
-          <ul class="pagination justify-content-center">
+          <ul class="pagination">
             {% if items.has_previous %}
               <li class="page-item">
                 <a class="page-link btn btn-outline-dark" href="?page=1{% if request.GET.league %}&league={{ request.GET.league }}{% endif %}{% if request.GET.product_type %}&product_type={{ request.GET.product_type }}{% endif %}{% if request.GET.kit_type %}&kit_type={{ request.GET.kit_type }}{% endif %}{% if request.GET.version %}&version={{ request.GET.version }}{% endif %}{% if request.GET.season %}&season={{ request.GET.season }}{% endif %}{% if request.GET.min_price %}&min_price={{ request.GET.min_price }}{% endif %}{% if request.GET.max_price %}&max_price={{ request.GET.max_price }}{% endif %}">
