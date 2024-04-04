@@ -35,7 +35,7 @@ def shop(request):
     season_filter = request.GET.get('season')
     min_price = request.GET.get('min_price')
     max_price = request.GET.get('max_price')
-    customizable_filter = request.GET.get('customizable', True)
+    customizable_filter = request.GET.get('customizable')
 
     # Apply filters if provided
     if league_filter:
