@@ -85,6 +85,7 @@ class Item(models.Model):
     stock = models.IntegerField(default=0)
     product_tags = models.ManyToManyField(ProductTag, max_length=300)
     sizes = models.ManyToManyField(Size, max_length=300)
+    custom_item_link = models.URLField(null=True)
 
     def __str__(self):
         return self.name
