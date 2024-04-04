@@ -115,8 +115,8 @@ CSS STRUCTURE:
  */
 @media screen and (max-width: 600px) {
     :root {
-        --header-height : 100px;
-        --header-height-min   : 80px;
+        --header-height : 50px;
+        --header-height-min   : 50px;
     }
 }
 /* Theme Colors */
@@ -1989,6 +1989,7 @@ blockquote cite {
 }
 .box{
   height: 100%;
+  
 }
 .product-rounded{
   border-radius: 20px;
@@ -1997,9 +1998,8 @@ blockquote cite {
 .product-item{
   box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.384);
   height: 100%;
-  
-
 }
+
 .product-item img.product-image {
     background: var(--light-color);
     border: 1px solid var(--grey-color);
@@ -2010,24 +2010,7 @@ blockquote cite {
     margin-bottom: 20px;
 
 }
-.product-item .cart-concern {
-    background: var(--light-color);
-    width: 80%;
-    text-align: center;
-    margin: auto;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 300px;
-    z-index: 9;
-    transition: 0.5s ease-out;
-    padding: 20px 30px;
-    opacity: 0;
-}
-.product-item:hover .cart-concern {
-    bottom: 280px;
-    opacity: 1;
-}
+
 i.icon.icon-arrow-io {
     font-size: 12px;
 }
