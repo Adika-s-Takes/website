@@ -325,7 +325,6 @@ def item_search_results(request):
     query = request.GET.get('query')
     item_list = Item.objects.filter(
         Q(name__icontains=query) |
-        Q(product_tags__name__icontains=query) |
         Q(description__icontains=query),
         active=True
     )
