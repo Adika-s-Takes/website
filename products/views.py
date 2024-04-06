@@ -319,3 +319,28 @@ def review(request, pk):
         'item' : item
     }
     return render(request, 'review.html', context)
+
+
+def item_search_results(request):
+    query = request.GET.get('query')
+    item_list = Item.objects.filter(
+        Q(name__icontains=query) |
+        Q(product_tags__name__icontains=query) |
+        Q(description__icontains=query),
+        active=True
+    )
+
+    paginator = Paginator(item_list, 36)  # 10 items per page
+    page_number = request.GET.get('page')
+    try:
+        items = paginator.page(page_number)
+    except PageNotAnInteger:
+        items = paginator.page(1)
+    except EmptyPage:
+        items = paginator.page(paginator.num_pages)
+
+    context = {
+        'items': items,
+        'query': query,
+    }
+    return render(request, 'search_results.html', context)

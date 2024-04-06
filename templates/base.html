@@ -46,8 +46,8 @@
     <div class="search-popup">
       <div class="search-popup-container">
 
-        <form role="search" method="get" class="search-form" action="">
-          <input type="search" id="search-form" class="search-field" placeholder="Type and press enter" value="" name="s" />
+        <form role="search" method="get" class="search-form" action="{% url 'search' %}">
+          <input type="search" id="search-form" class="search-field" placeholder="Type and press enter" value="" name="query" />
           <button type="submit" class="search-submit"><a href="#"><i class="icon icon-search"></i></a></button>
         </form>
 
