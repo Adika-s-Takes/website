@@ -56,7 +56,7 @@ def shop(request):
         items = items.filter(price__lte=max_price)
 
     # Paginate the queryset
-    paginator = Paginator(items, 34)  # 10 items per page
+    paginator = Paginator(items, 36)  # 10 items per page
     page_number = request.GET.get('page')
     try:
         paginated_items = paginator.page(page_number)
@@ -123,7 +123,7 @@ def item_details(request, pk):
     related_items = [related_item for related_item in related_items if fuzz.ratio(item.name, related_item.name) >= 60]
 
     # Limit the queryset to 10 related items
-    related_items = related_items[:10]
+    related_items = related_items[:12]
 
     # Rename loop variable from 'item' to 'related_item'
     for related_item in related_items:

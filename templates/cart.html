@@ -8,8 +8,8 @@
     <p>Your shopping cart contains all the items you've selected for purchase. Review the items below and proceed to checkout when you're ready to complete your purchase.</p>
     {% if messages %}
     {% for message in messages %}
-    <div class="alert broder rounded">
-      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+    <div class="alert broder rounded p-4">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
       {{message}}
     </div>
     {% endfor %}
@@ -54,7 +54,7 @@
           </div>
       {% endfor %}
   {% endfor %}
-  
+
     </div>
     <hr>
     <h4>Total: NGN{{ total_price_all_items }} (excluding shipping fees)</h4>

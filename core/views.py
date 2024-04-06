@@ -7,10 +7,10 @@ from django.contrib.auth.decorators import login_required
 
 
 def index(request):
-    items = Item.objects.filter(active=True)[:6]
+    items = Item.objects.filter(active=True)[:8]
     drips = DripGuide.objects.filter(active=True)
     cart = request.session.get('cart', {})
-    try: 
+    try:
         total_quantity_in_cart = sum(sum(details['quantity'] for details in sizes.values()) for sizes in cart.values())
     except Exception as e:
         total_quantity_in_cart = 0
@@ -21,7 +21,7 @@ def index(request):
         'title': "Homepage",
         'total_items_in_cart' : total_quantity_in_cart,
     }
-    
+
     return render(request, 'index.html', context)
 
 def dashboard(request):
@@ -61,12 +61,12 @@ def thank_you(request):
         tx_ref = request.GET.get('tx_ref')
         transaction_id = request.GET.get('transaction_id')
         status = request.GET.get('status')
-        
+
         # Verify the transaction using Flutterwave API
         verify_url = f"https://api.flutterwave.com/v3/transactions/{transaction_id}/verify"
         headers = {'Authorization': 'Bearer FLWSECK_TEST-fe94cd04e4ef7456b433e70e84c96ea9-X'}
         response = requests.get(verify_url, headers=headers)
-        
+
         if response.status_code == 200:
             # Transaction verified successfully
             data = response.json()
@@ -75,7 +75,7 @@ def thank_you(request):
                 # Fetch orders with the same tx_ref
                 orders = Order.objects.filter(ref=tx_ref)
                 print(orders)
-                
+
                 # Update each order
                 for order in orders:
                     order.paid = True
@@ -100,7 +100,7 @@ def thank_you(request):
     else:
         # Redirect parameters not found, handle accordingly
         return HttpResponse("<h1>Invalid Request!</h1>")
-    
+
 def clear(request):
     request.session['cart'] = {}
     return redirect('shop')
