@@ -357,6 +357,10 @@ def item_search_results(request):
         items = items.filter(price__gte=min_price)
     if max_price:
         items = items.filter(price__lte=max_price)
+    if query:
+        print("I DEY")
+    else:
+        pass
 
     paginator = Paginator(item_list, 36)  # 10 items per page
     page_number = request.GET.get('page')
