@@ -56,7 +56,7 @@ def shop(request):
         items = items.filter(price__lte=max_price)
 
     # Paginate the queryset
-    paginator = Paginator(items, 30)  # 10 items per page
+    paginator = Paginator(items, 34)  # 10 items per page
     page_number = request.GET.get('page')
     try:
         paginated_items = paginator.page(page_number)
