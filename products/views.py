@@ -325,9 +325,11 @@ def item_search_results(request):
     query = request.GET.get('query')
     item_list = Item.objects.filter(
         Q(name__icontains=query) |
-        Q(description__icontains=query),
+        Q(description__icontains=query) |
+        Q(product_tags__tag__icontains=query) |  # Lookup through related ProductTag's tag field
+        Q(sizes__size__icontains=query),  # Lookup through related Size's size field
         active=True
-    )
+    ).distinct()
 
     paginator = Paginator(item_list, 36)  # 10 items per page
     page_number = request.GET.get('page')
