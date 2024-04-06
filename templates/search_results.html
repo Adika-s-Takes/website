@@ -108,7 +108,7 @@
             <input type="hidden" value="{{query}}" name="query">
             <input type="number" name="min_price" placeholder="Min Price" class="u-full-width border-1 border-black" value="{{ request.GET.min_price }}">
             <input type="number" name="max_price" placeholder="Max Price" class="u-full-width border-1 border-black" value="{{ request.GET.max_price }}">
-            <input type="text" name="query" placeholder="Search Query" class="u-full-width border-1 border-black" value="{{ query }}">
+            <input type="hidden" name="query" placeholder="Search Query" class="u-full-width border-1 border-black" value="{{ query }}">
             <select name="league" class="form-control u-full-width border-1 border-black">
             <option value="" {% if not request.GET.league %}selected{% endif %}>--- (All Leagues)</option>
             <option value="PREMIER LEAGUE" {% if request.GET.league == "PREMIER LEAGUE" %}selected{% endif %}>Premier League</option>
