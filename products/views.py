@@ -323,14 +323,6 @@ def review(request, pk):
 
 def item_search_results(request):
     query = request.GET.get('query')
-    item_list = Item.objects.filter(
-        Q(name__icontains=query) |
-        Q(description__icontains=query) |
-        Q(product_tags__tag__icontains=query) |  # Lookup through related ProductTag's tag field
-        Q(sizes__size__icontains=query),  # Lookup through related Size's size field
-        active=True
-    ).distinct()
-
     league_filter = request.GET.get('league')
     product_type_filter = request.GET.get('product_type')
     kit_type_filter = request.GET.get('kit_type')
@@ -340,29 +332,33 @@ def item_search_results(request):
     max_price = request.GET.get('max_price')
     customizable_filter = request.GET.get('customizable')
 
+    item_list = Item.objects.filter(
+        Q(name__icontains=query) |
+        Q(description__icontains=query) |
+        Q(product_tags__tag__icontains=query) |  # Lookup through related ProductTag's tag field
+        Q(sizes__size__icontains=query),  # Lookup through related Size's size field
+        active=True
+    ).distinct()
+
     # Apply filters if provided
     if league_filter:
-        items = items.filter(league=league_filter)
+        item_list = item_list.filter(league=league_filter)
     if product_type_filter:
-        items = items.filter(type=product_type_filter)
+        item_list = item_list.filter(type=product_type_filter)
     if kit_type_filter:
-        items = items.filter(kit_type=kit_type_filter)
+        item_list = item_list.filter(kit_type=kit_type_filter)
     if version_filter:
-        items = items.filter(version=version_filter)
+        item_list = item_list.filter(version=version_filter)
     if customizable_filter:
-        items = items.filter(customizable=customizable_filter)
+        item_list = item_list.filter(customizable=customizable_filter)
     if season_filter:
-        items = items.filter(season=season_filter)
+        item_list = item_list.filter(season=season_filter)
     if min_price:
-        items = items.filter(price__gte=min_price)
+        item_list = item_list.filter(price__gte=min_price)
     if max_price:
-        items = items.filter(price__lte=max_price)
-    if query:
-        print("I DEY")
-    else:
-        pass
+        item_list = item_list.filter(price__lte=max_price)
 
-    paginator = Paginator(item_list, 36)  # 10 items per page
+    paginator = Paginator(item_list, 36)  # 36 items per page
     page_number = request.GET.get('page')
     try:
         items = paginator.page(page_number)
