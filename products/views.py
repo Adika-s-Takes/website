@@ -331,6 +331,33 @@ def item_search_results(request):
         active=True
     ).distinct()
 
+    league_filter = request.GET.get('league')
+    product_type_filter = request.GET.get('product_type')
+    kit_type_filter = request.GET.get('kit_type')
+    version_filter = request.GET.get('version')
+    season_filter = request.GET.get('season')
+    min_price = request.GET.get('min_price')
+    max_price = request.GET.get('max_price')
+    customizable_filter = request.GET.get('customizable')
+
+    # Apply filters if provided
+    if league_filter:
+        items = items.filter(league=league_filter)
+    if product_type_filter:
+        items = items.filter(type=product_type_filter)
+    if kit_type_filter:
+        items = items.filter(kit_type=kit_type_filter)
+    if version_filter:
+        items = items.filter(version=version_filter)
+    if customizable_filter:
+        items = items.filter(customizable=customizable_filter)
+    if season_filter:
+        items = items.filter(season=season_filter)
+    if min_price:
+        items = items.filter(price__gte=min_price)
+    if max_price:
+        items = items.filter(price__lte=max_price)
+
     paginator = Paginator(item_list, 36)  # 10 items per page
     page_number = request.GET.get('page')
     try:

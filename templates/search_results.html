@@ -76,7 +76,7 @@
 
           {% for num in items.paginator.page_range %}
             <li class="page-item {% if items.number == num %}active{% endif %}">
-              <a class="page-link btn btn-outline-dark" href="?page={{ num }}{% if request.GET.league %}&league={{ request.GET.league }}{% endif %}{% if request.GET.product_type %}&product_type={{ request.GET.product_type }}{% endif %}{% if request.GET.kit_type %}&kit_type={{ request.GET.kit_type }}{% endif %}{% if request.GET.version %}&version={{ request.GET.version }}{% endif %}{% if request.GET.season %}&season={{ request.GET.season }}{% endif %}{% if request.GET.min_price %}&min_price={{ request.GET.min_price }}{% endif %}{% if request.GET.max_price %}&max_price={{ request.GET.max_price }}{% endif %}">
+              <a class="page-link btn btn-outline-dark" href="?page={{ num }}{% if request.GET.league %}&league={{ request.GET.league }}{% endif %}{% if request.GET.product_type %}&product_type={{ request.GET.product_type }}{% endif %}{% if request.GET.kit_type %}&kit_type={{ request.GET.kit_type }}{% endif %}{% if request.GET.version %}&version={{ request.GET.version }}{% endif %}{% if request.GET.season %}&season={{ request.GET.season }}{% endif %}{% if request.GET.min_price %}&min_price={{ request.GET.min_price }}{% endif %}{% if request.GET.max_price %}&max_price={{ request.GET.max_price }}{% endif %}{% if request.GET.query %}&max_price={{ request.GET.query }}{% endif %}">
                 {{ num }}
               </a>
             </li>
