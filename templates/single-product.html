@@ -75,7 +75,7 @@
                       <p><b><i class="bi bi-truck fw-bold"></i> Shipping:</b> Usually ships out within two business days</p>
                       {% if item.custom_item_link %}
                       <div>
-                        <a href="{{item.custom_item_link}}#form" class="btn btn-primary">Customize</a> 
+                        <a href="/products/item/{{custom_item_id}}" class="btn btn-primary">Customize</a> 
                       </div>
                       {% endif %}
                       {% if item.stock == 0 %}
