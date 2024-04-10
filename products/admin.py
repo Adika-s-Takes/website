@@ -10,14 +10,7 @@ class ProductDetailAdmin(admin.TabularInline):
 
 class ItemAdmin(admin.ModelAdmin):
     inlines = [ProductImageAdmin, ProductDetailAdmin]
-    list_display = ['name', 'id', 'price', 'initial_price', 'type', 'stock', 'active', 'custom_item_id', 'kit_type', 'customizable', 'product_tags', 'sizes']
-
-    def sizes(self, obj):
-        selected_sizes = obj.sizes.all()
-        if selected_sizes:
-            return ', '.join([size.name for size in selected_sizes])
-        else:
-            return 'No sizes selected'
+    list_display = ['name', 'id', 'price', 'initial_price', 'type', 'stock', 'active', 'custom_item_id', 'kit_type', 'customizable']
 
 class OrderAdmin(admin.ModelAdmin):
     list_display = ['id', 'item_name', 'quantity', 'price', 'customer', 'status', 'shipping_info_address', 'customer_phone_number', 'customer_email', 'paid']
