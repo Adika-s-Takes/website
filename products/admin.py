@@ -10,10 +10,10 @@ class ProductDetailAdmin(admin.TabularInline):
 
 class ItemAdmin(admin.ModelAdmin):
     inlines = [ProductImageAdmin, ProductDetailAdmin]
-    list_display = ['name', 'id', 'price', 'initial_price', 'type', 'stock', 'active', 'custom_item_id', 'kit_type', 'customizable', 'product_tags', 'sizes']
+    list_display = ['name', 'id', 'price', 'initial_price', 'type', 'stock', 'active', 'custom_item_id', 'kit_type', 'customizable', 'product_tags', 'sizess']
 
-    def sizes(self, obj):
-        return obj.sizes.size
+    def sizess(self, obj):
+        return f"{obj.sizes.size}"
 
 class OrderAdmin(admin.ModelAdmin):
     list_display = ['id', 'item_name', 'quantity', 'price', 'customer', 'status', 'shipping_info_address', 'customer_phone_number', 'customer_email', 'paid']
