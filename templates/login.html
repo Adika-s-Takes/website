@@ -14,6 +14,11 @@
           <div class="section-header">
             <h2 class="section-title">Login</h2>
             <p>Beautiful day, isn't it? Login to continue shopping</p>
+            {% if messages %}
+            {% for message in messages %}
+            <p><span>{{message}}</span></p>
+            {% endfor %}
+            {% endif %}
           </div>
           <form name="contactform" method="post" class="contact-form">
             {% csrf_token %}

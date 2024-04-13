@@ -14,6 +14,11 @@
           <div class="section-header">
             <h2 class="section-title">Register</h2>
             <p class="text-muted">Join the Adikastakes family today, we're always happy to have new people on-board</p>
+            {% if messages %}
+            {% for message in messages %}
+            <p><span>{{message}}</span></p>
+            {% endfor %}
+            {% endif %}
           </div>
           <form name="contactform" method="post" class="contact-form">
             {% csrf_token %}
