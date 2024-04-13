@@ -403,7 +403,7 @@ def add_to_wishlist(request, pk):
 @login_required
 def remove_from_wishlist(request, pk):
     item = Item.objects.get(id=pk)
-    Wishlist.objects.filter(item=item).delete()
+    Wishlist.objects.get(item=item).delete()
     messages.info(request, "Item removed from wishlist. Sad to see you give up on a wish. You can try wishing again by taking a look at other products")
     return redirect('wishlist')
     
