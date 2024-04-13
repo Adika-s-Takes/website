@@ -383,14 +383,15 @@ def wishlist(request):
 
 
 @login_required
-def add_to_wishlist(request, product_name):
+def add_to_wishlist(request, pk):
     user = request.user
-    wishlist_item = Wishlist(user=user, product_name=product_name)
+    item = Item.objects.get(id=pk)
+    wishlist_item = Wishlist(user=user, item=item)
     wishlist_item.save()
     return redirect('wishlist')
 
 @login_required
-def remove_from_wishlist(request, wishlist_item_id):
-    Wishlist.objects.filter(id=wishlist_item_id).delete()
+def remove_from_wishlist(request, pk):
+    Wishlist.objects.filter(id=pk).delete()
     return redirect('wishlist')
     
