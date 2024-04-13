@@ -103,7 +103,7 @@ def item_details(request, pk):
                 cart[product_id][size]['quantity'] += quantity
                 cart[product_id][size]['name'] = name
                 cart[product_id][size]['number'] = number
-                messages.success(request, "Item added to cart👌")
+                messages.success(request, "Alright chief, we've added this item to your cart. You can either continue shopping or checkout")
         else:
             cart = {product_id: {size: {'quantity': quantity, 'name': name, 'number': number}}}
 
