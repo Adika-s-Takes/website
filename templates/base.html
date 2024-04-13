@@ -92,7 +92,7 @@
                     <a href="{% url 'cart' %}"><i class="icon icon-shopping-cart"></i>({{total_items_in_cart}})</a>
                   </li>
                   <li>
-                    <a href="wishlist.html"><i class="icon icon-heart"></i></a>
+                    <a href="{% url 'wishlist' %}"><i class="icon icon-heart"></i></a>
                   </li>
                   <li class="user-items search-item pe-3">
                     <a href="#" class="search-button"><i class="icon icon-search"></i></a>
@@ -130,7 +130,7 @@
                         <ul class="submenu">
                           <li><a href="{% url 'shop' %}" class="item-anchor {% if current_path == '/products/shop' %}active{% endif %}">Shop</a></li>
                           <li><a href="{% url 'cart' %}" class="item-anchor {% if current_path == '/products/cart' %}active{% endif %}">Cart</a></li>
-                          <li><a href="wishlist.html" class="item-anchor">Wishlist</a></li>
+                          <li><a href="{% url 'wishlist' %}" class="item-anchor {% if current_path == '/products/wishlist' %}active{% endif %}">Wishlist</a></li>
                         </ul>
                       </li>
 
