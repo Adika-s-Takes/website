@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from collections import defaultdict
-from .models import Item, ProductImage, ProductDetail, Order, ProductReview
+from .models import Item, ProductImage, ProductDetail, Order, ProductReview, Wishlist
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -101,9 +101,9 @@ def item_details(request, pk):
             else:
                 cart.setdefault(product_id, {}).setdefault(size, {'quantity': 0, 'name': '', 'number': ''})
                 cart[product_id][size]['quantity'] += quantity
-                messages.success(request, "Item added to cart👌")
                 cart[product_id][size]['name'] = name
                 cart[product_id][size]['number'] = number
+                messages.success(request, "Item added to cart👌")
         else:
             cart = {product_id: {size: {'quantity': quantity, 'name': name, 'number': number}}}
 
@@ -373,3 +373,24 @@ def item_search_results(request):
         'title' : query,
     }
     return render(request, 'search_results.html', context)
+
+@login_required
+def wishlist(request):
+    context = {
+        'title' : 'Wishlist'
+    }
+    return render(request, 'wishlist.html', context)
+
+
+@login_required
+def add_to_wishlist(request, product_name):
+    user = request.user
+    wishlist_item = Wishlist(user=user, product_name=product_name)
+    wishlist_item.save()
+    return redirect('wishlist')
+
+@login_required
+def remove_from_wishlist(request, wishlist_item_id):
+    Wishlist.objects.filter(id=wishlist_item_id).delete()
+    return redirect('wishlist')
+    

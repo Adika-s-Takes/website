@@ -83,6 +83,11 @@
                         <a href="/products/item/{{item.custom_item_id}}" class="btn btn-primary d-block">Customize</a> 
                       </div>
                       {% endif %}
+                      {% if user.is_authenticated %}
+                      <div>
+                        <a href="{% url 'add_to_wishlist' item.name %}" class="btn btn-primary d-block">Customize</a> 
+                      </div>
+                      {% endif %}
                     </form>
                     
                   </div>

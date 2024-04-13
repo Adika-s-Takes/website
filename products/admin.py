@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Item, ProductImage, ProductTag, ProductDetail, Order, Size, ProductReview
+from .models import Item, ProductImage, ProductTag, ProductDetail, Order, Size, ProductReview, Wishlist
 
 
 class ProductImageAdmin(admin.TabularInline):
@@ -11,6 +11,14 @@ class ProductDetailAdmin(admin.TabularInline):
 class ItemAdmin(admin.ModelAdmin):
     inlines = [ProductImageAdmin, ProductDetailAdmin]
     list_display = ['name', 'id', 'price', 'initial_price', 'type', 'stock', 'active', 'custom_item_id', 'kit_type', 'customizable']
+
+
+class WishlistAdmin(admin.ModelAdmin):
+    list_display = ['item_name', 'user']
+
+    def item_name(self, obj):
+        if obj.item:
+            return obj.item.name
 
 class OrderAdmin(admin.ModelAdmin):
     list_display = ['id', 'item_name', 'quantity', 'price', 'customer', 'status', 'shipping_info_address', 'customer_phone_number', 'customer_email', 'paid']
