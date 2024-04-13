@@ -158,6 +158,21 @@ def shipping(request):
 
 
 @login_required
+def shipping_detail(request):
+    locations = ShippingInfo.objects.filter(user=request.user)
+    context = {
+        'title' : 'Shiiping Info',
+        'shipping_info' : locations,
+    }
+    return render(request, 'shipping_detail.html', context)
+
+@login_required
+def delete_shipping(request, pk):
+    ShippingInfo.objects.get(id=pk).delete()
+    messages.info(request, "Shipping information deleted successfully.")
+
+
+@login_required
 def get_cities_by_country(request, country_id):
     try:
         country = Country.objects.get(id=country_id)

@@ -7,35 +7,37 @@
     <h3>Checkout - Order Summary</h3>
     <div class="row">
       <div class="col-md-10">
-        <table class="table u-full-width">
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for size, items in grouped_items.items %}
-              {% for item in items %}
-                <tr>
-                  <td>
-                    <div class="image-holder zoom-effect">
-                      <img src="{{ item.item.featured_image.url }}" alt="" class="image-rounded image-bg" width="150">
-                    </div>
-                  </td>
-                  <td>{{ item.item.name }} ({{size}})</td>
-                  <td>NGN{{ item.item.price }}</td>
-                  <td>{{ item.quantity }}</td>
-                  <td>NGN{{ item.total_price }}</td>
-                </tr>
+        <div class="responsive-table">
+          <table class="table u-full-width">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for size, items in grouped_items.items %}
+                {% for item in items %}
+                  <tr>
+                    <td>
+                      <div class="image-holder zoom-effect">
+                        <img src="{{ item.item.featured_image.url }}" alt="" class="image-rounded image-bg" width="150">
+                      </div>
+                    </td>
+                    <td>{{ item.item.name }} ({{ size }})</td>
+                    <td>NGN{{ item.item.price }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>NGN{{ item.total_price }}</td>
+                  </tr>
+                {% endfor %}
               {% endfor %}
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
+            </tbody>
+          </table>
+        </div>
+      </div>      
     </div>
     <form id="checkout-form" method="POST">
       {% csrf_token %}
