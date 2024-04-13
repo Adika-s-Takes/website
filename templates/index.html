@@ -205,28 +205,25 @@
     <div class="d-flex flex-wrap justify-content-between">
       <div class="row">
         <div class="col-md-2">
-          <img src="{% static 'images/adidas.png' %}" alt="phone" class="brand-image img-fluid">
+          <a href="{% url 'search' %}?query=adidas"><img src="{% static 'images/adidas.png' %}" alt="phone" class="brand-image img-fluid"></a>
         </div>
         <div class="col-md-2">
-          <img src="{% static 'images/barcelona.png' %}" alt="phone" class="brand-image">
+          <a href="{% url 'search' %}?query=barcelona"><img src="{% static 'images/barcelona.png' %}" alt="phone" class="brand-image"></a>
         </div>
         <div class="col-md-2">
-          <img src="{% static 'images/chelsea.png' %}" alt="phone" class="brand-image">
+          <a href="{% url 'search' %}?query=chelsea"><img src="{% static 'images/chelsea.png' %}" alt="phone" class="brand-image"></a>
         </div>
         <div class="col-md-2">
-          <img src="{% static 'images/liverpool.png' %}" alt="phone" class="brand-image">
+          <a href="{% url 'search' %}?query=liverpool"><img src="{% static 'images/liverpool.png' %}" alt="phone" class="brand-image"></a>
         </div>
         <div class="col-md-2">
-          <img src="{% static 'images/mancity.png' %}" alt="phone" class="brand-image">
+          <a href="{% url 'search' %}?query=manchesster+united"><img src="{% static 'images/manu.png' %}" alt="phone" class="brand-image"></a>
         </div>
         <div class="col-md-2">
-          <img src="{% static 'images/manu.png' %}" alt="phone" class="brand-image">
+          <a href="{% url 'search' %}?query=manchesster+city"><img src="{% static 'images/mancity.png' %}" alt="phone" class="brand-image"></a>
         </div>
         <div class="col-md-2">
-          <img src="{% static 'images/mancity.png' %}" alt="phone" class="brand-image">
-        </div>
-        <div class="col-md-2">
-          <a href="{% url 'search' %}"></a><img src="{% static 'images/nike.png' %}" alt="phone" class="brand-image">
+          <a href="{% url 'search' %}?query=nike"></a><img src="{% static 'images/nike.png' %}" alt="phone" class="brand-image">
         </div>
         <div class="col-md-2">
           <a href="{% url 'search' %}?query=madrid"><img src="{% static 'images/madrid.png' %}" alt="phone" class="brand-image"></a>
