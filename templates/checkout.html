@@ -71,11 +71,11 @@
         </div>
       </div>
     </form>
-    {% endif %}
     {% else %}
     <h3>Shipping info</h3>
-    <p>It appears you have no shipping info. Click the button below to add shipping info</p>
+    <p>It appears you have no shipping info and cannot checkout. Click the button below to add shipping info and checkout</p>
     <a href="{% url 'shipping' %}" class="btn btn-primary"><i class="bi bi-truck"></i> Add Shipping Info</a>
+    {% endif %}
     <a href="{% url 'shop' %}" class="btn btn-outline-dark"><i class="bi bi-cart"></i> Continue Shopping</a>
   </div>
 </section>

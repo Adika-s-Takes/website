@@ -58,7 +58,7 @@
                 <h2 class="banner-title" style="color: #a5d326;">Play With Style</h2>
                 <p style="color: #d6d2d2; font-weight: bold;" class="fw-bold">Who says you can't look good while doing hard things? Glide with style and unlock your full potential with our sports gear</p>
                 <div class="btn-wrap">
-                  <a href="shop.html" class="btn btn-light btn-light-arrow btn-medium d-flex align-items-center" tabindex="0">Shop now <i class="icon icon-arrow-io"></i>
+                  <a href="{% url 'shop' %}" class="btn btn-light btn-light-arrow btn-medium d-flex align-items-center" tabindex="0">Shop now <i class="icon icon-arrow-io"></i>
                   </a>
                 </div>
               </div>
@@ -77,7 +77,7 @@
                 <h2 class="banner-title" style="color: #a5d326;">Represent</h2>
                 <p style="color: #e6e6e6; font-weight: bold;">Merge style and team allegiance with our exclusive Jersey Collection. Elevate your look while showcasing your support for your favorite teams. Find the perfect blend of fashion and fandom in our trendy jerseys.</p>
                 <div class="btn-wrap">
-                  <a href="shop.html" class="btn btn-light btn-light-arrow btn-medium d-flex align-items-center" tabindex="0">Shop now <i class="icon icon-arrow-io"></i>
+                  <a href="{% url 'shop' %}" class="btn btn-light btn-light-arrow btn-medium d-flex align-items-center" tabindex="0">Shop now <i class="icon icon-arrow-io"></i>
                   </a>
                 </div>
               </div>
@@ -143,6 +143,9 @@
 
 <section id="latest-collection" style="padding-top: 50px;">
   <div class="container">
+    <div class="section-header d-flex flex-wrap align-items-center justify-content-between">
+      <h2 class="section-title">Brands and Clubs from all over!</h2>            
+    </div>
     <div class="product-collection row">
       <div class="col-lg-7 col-md-12 left-content">
         <div class="collection-item">
@@ -155,7 +158,7 @@
             <h3 class="item-title" style="color: #d2d2d2;">Fan Favorite Jerseys</h3>
             <p style="color: aliceblue;">Fuse fashion with team pride in our Jersey Collection. Elevate your style while supporting your team. Discover trendy jerseys for the ultimate fan statement.</p>
             <div class="btn-wrap">
-              <a href="shop.html" class="d-flex align-items-center" style="color: rgb(233, 233, 233);">shop collection <i class="icon icon-arrow-io"></i>
+              <a href="{% url 'shop' %}" class="d-flex align-items-center" style="color: rgb(233, 233, 233);">shop collection <i class="icon icon-arrow-io"></i>
               </a>
             </div>
           </div>
@@ -172,7 +175,7 @@
             <h3 class="item-title" style="color: #d2d2d2;">Soccer Boots</h3>
             <p style="color: aliceblue;">Performance in Every Step</p>
             <div class="btn-wrap">
-              <a href="shop.html" class="d-flex align-items-center" style="color: rgb(233, 233, 233);">shop collection <i class="icon icon-arrow-io"></i>
+              <a href="{% url 'shop' %}" class="d-flex align-items-center" style="color: rgb(233, 233, 233);">shop collection <i class="icon icon-arrow-io"></i>
               </a>
             </div>
           </div>
@@ -187,12 +190,29 @@
             <h3 class="item-title" style="color: #d2d2d2;">Sports Gear</h3>
             <p style="color: aliceblue;">Elevate your game</p>
             <div class="btn-wrap">
-              <a href="shop.html" class="d-flex align-items-center" style="color: rgb(233, 233, 233);">shop collection <i class="icon icon-arrow-io"></i>
+              <a href="{% url 'shop' %}" class="d-flex align-items-center" style="color: rgb(233, 233, 233);">shop collection <i class="icon icon-arrow-io"></i>
               </a>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="brand-collection" class="padding-medium bg-light-grey">
+  <div class="container">
+    <div class="d-flex flex-wrap justify-content-between">
+      <img src="{% static 'images/adidas.png' %}" alt="phone" class="brand-image">
+      <img src="{% static 'images/barcelona.png' %}" alt="phone" class="brand-image">
+      <img src="{% static 'images/chelsea.png' %}" alt="phone" class="brand-image">
+      <img src="{% static 'images/liverpool.png' %}" alt="phone" class="brand-image">
+      <img src="{% static 'images/mancity.png' %}" alt="phone" class="brand-image">
+      <img src="{% static 'images/manu.png' %}" alt="phone" class="brand-image">
+      <img src="{% static 'images/mancity.png' %}" alt="phone" class="brand-image">
+      <img src="{% static 'images/nike.png' %}" alt="phone" class="brand-image">
+      <img src="{% static 'images/madrid.png' %}" alt="phone" class="brand-image">
+
     </div>
   </div>
 </section>
