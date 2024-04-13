@@ -6,7 +6,16 @@
   <div class="container">
     <h2>Shipping Information</h2>
     <p>A general overview of your shipping information</p>
-    <a href="#" class="btn btn-small btn-outline-dark mb-3" style="margin-top: -10px;">Manage shipping information</a>
+    <a href="{% url 'shipping' %}" class="btn btn-outline-primary"><i class="bi bi-truck"></i> Add new shipping info</a>
+    {% if messages %}
+    {% for message in messages %}
+        <div class="rounded u-full-width p-3" style="border: 1.7px solid #7ea021;">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        <p>{{message}}</p>
+        <a href="{% url 'shop' %}" class="btn btn-outline-dark"><i class="bi bi-cart"></i> Continue Shopping</a>
+        </div>
+    {% endfor %}
+    {% endif %}
     <div class="row">
       {% for info in shipping_info %}
       <div class="col-md-5 col-xl-4">

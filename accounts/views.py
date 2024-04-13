@@ -170,6 +170,7 @@ def shipping_detail(request):
 def delete_shipping(request, pk):
     ShippingInfo.objects.get(id=pk).delete()
     messages.info(request, "Shipping information deleted successfully.")
+    return redirect('shipping_detail')
 
 
 @login_required
