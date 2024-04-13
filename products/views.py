@@ -376,8 +376,10 @@ def item_search_results(request):
 
 @login_required
 def wishlist(request):
+    wishes = Wishlist.objects.filter(user=request.user)
     context = {
-        'title' : 'Wishlist'
+        'title' : 'Wishlist',
+        'wishes' : wishes
     }
     return render(request, 'wishlist.html', context)
 
@@ -392,12 +394,16 @@ def add_to_wishlist(request, pk):
         return redirect('wishlist')
     else:
         wishlist_item.save()
-        messages.info(request, "Alright, you've made a wish, now let's pray it gets granted, Goodluck.")
+        messages.info(request, "Alright, you've made a wish, now let's pray it gets granted, Goodluck. You can also add a couple of other wishes")
         return redirect('wishlist')
+
+
 
 
 @login_required
 def remove_from_wishlist(request, pk):
-    Wishlist.objects.filter(id=pk).delete()
+    item = Item.objects.get(id=pk)
+    Wishlist.objects.filter(item=item).delete()
+    messages.info(request, "Item removed from wishlist. Sad to see you give up on a wish. You can try wishing again by taking a look at other products")
     return redirect('wishlist')
     
