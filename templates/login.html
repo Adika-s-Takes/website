@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+{% load socialaccount %}
 <section class="padding-small">
   <div class="container">
     <div class="row align-items-center">
@@ -32,7 +33,7 @@
               </span>
             </label> -->
             <button type="submit" name="submit" class="btn btn-dark btn-full btn-medium">Login</button>
-            <a name="submit" class="btn btn-outline-dark btn-full btn-medium"><i class="bi bi-google"></i>  Continue with Google</a>
+            <a href="{% provider_login_url 'google' %}" class="btn btn-outline-dark btn-full btn-medium"><i class="bi bi-google"></i>  Continue with Google</a>
             <span class="label-body">New here? <a href="{% url 'register' %}">Sign up</a></span>
           </form>
         </div>

@@ -36,7 +36,7 @@
               </span>
             </label>
             <button type="submit" name="submit" class="btn btn-dark btn-full btn-medium">Sign Up</button>
-            <a name="submit" class="btn btn-outline-dark btn-full btn-medium"><i class="bi bi-google"></i>  Continue With Google</a>
+            <a href="{% provider_login_url 'google' %}" class="btn btn-outline-dark btn-full btn-medium"><i class="bi bi-google"></i>  Continue With Google</a>
             <span class="label-body">Already a member? <a href="{% url 'login' %}">Log In</a></span>
           </form>
         </div>
