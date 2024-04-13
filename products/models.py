@@ -69,7 +69,7 @@ SEASON = (
     ("2009/2010", "2009/2010"),
     ("2021/2022", "2021/2022"),
     ("2023/2024", "2023/2024"),
-    ("2022/2023", "2022/2023"),  
+    ("2022/2023", "2022/2023"),
 )
 
 class ProductTag(models.Model):
@@ -148,6 +148,9 @@ class Order(models.Model):
 
     def __str__(self):
         return self.item.name
+
+    def get_shipping_address(self, shipping_info):
+        return self.shipping_info.address
 
 class ProductImage(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True)

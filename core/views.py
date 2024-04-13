@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 import requests
 from django.http import HttpResponse
 from products.models import Order, Item
+from django.template.loader import render_to_string, get_template
+from django.core.mail import EmailMessage
 from .models import DripGuide
 from django.contrib.auth.decorators import login_required
 
@@ -74,7 +76,8 @@ def thank_you(request):
             if data['status'] == 'success':
                 # Fetch orders with the same tx_ref
                 orders = Order.objects.filter(ref=tx_ref)
-                print(orders)
+                order = orders[0]
+                # print(orders)
 
                 # Update each order
                 for order in orders:
@@ -83,10 +86,29 @@ def thank_you(request):
                     order.status = "ORDER PLACED"
                     order.save()
 
+                # Send email notification
+                username = request.user.username
+                email = request.user.email
+                ctx = {
+                    'user': username,
+                    'orders': orders,
+                    'order' : order,
+                }
+                message = get_template('thanks.html').render(ctx)
+                msg = EmailMessage(
+                    'Order Placed',
+                    message,
+                    'The Adikastakes Logistics Team',
+                    [email],
+                )
+                msg.content_subtype = "html"  # Main content is now text/html
+                msg.send()
+
                 # Clear the cart
                 request.session['cart'] = {}
+
                 context = {
-                    'title' : 'Thank You!'
+                    'title': 'Thank You!'
                 }
 
                 # Payment was successful, render the thank you page

@@ -61,7 +61,7 @@
           <input type="hidden" name="tx_ref" value="{{ unique_reference }}" />
           <input type="hidden" name="amount" value="{{ total_price }}" id="amount" />
           <input type="hidden" name="currency" value="NGN"/>
-          <input type="hidden" name="redirect_url" value="https://google.com" />
+          <input type="hidden" name="redirect_url" value="https://adikasstakes.pythonanywhere.com/thank-you" />
           <input type="hidden" name="customer[name]" value="{{ user.first_name }} {{ user.last_name }}" />
           <input type="hidden" name="customer[email]" value="{{ user.email }}" />
           <button type="submit" class="btn btn-dark"><i class="bi bi-chevron-double-right"></i> Checkout</button>
@@ -110,10 +110,10 @@
   document.getElementById("checkout-form").addEventListener("submit", function(event) {
     // Prevent default form submission
     event.preventDefault();
-    
+
     // Serialize form data
     var formData = new FormData(this);
-    
+
     // Make AJAX POST request
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "/products/checkout", true);
@@ -142,7 +142,7 @@
       tx_ref: "{{unique_reference}}",
       amount: totalPrice.toFixed(2),
       currency: "NGN",
-      redirect_url: "https://fmrcnx65-8000.uks1.devtunnels.ms/thank-you",
+      redirect_url: "https://adikasstakes.pythonanywhere.com/thank-you",
       customer: {
         email: "{{user.email}}",
         name: "{{user.first_name}}, {{user.last_name}}",

@@ -15,10 +15,10 @@ def login(request):
 
     if user.is_authenticated:
         return redirect('dashboard')
-    
+
     cart = request.session.get('cart', {})
     total_quantity_in_cart = sum(sum(details['quantity'] for details in sizes.values()) for sizes in cart.values())
-    
+
     context = {
         'title' : 'Login',
         'total_items_in_cart' : total_quantity_in_cart,
@@ -27,7 +27,7 @@ def login(request):
     if request.method == 'POST':
         username = request.POST['username'] #Requesting Username
         password = request.POST['password'] #Requesting Password
-    
+
         user = auth.authenticate(username=username, password=password)
 
         if user is not None: #Cheking If User Exists in the database
@@ -36,8 +36,8 @@ def login(request):
         else:
             messages.error(request, 'Invalid Username or Password') #Conditional Checking if credentials are correct
             return redirect('login')#Redirects to login if invalid
-        
-    
+
+
 
     else:
         return render(request, 'login.html', context)
@@ -53,7 +53,7 @@ def register(request):
 
     if user.is_authenticated:
         return redirect('dashboard')
-    
+
     context = {
         'title' : 'Sign Up',
         'total_items_in_cart' : total_quantity_in_cart,
@@ -76,8 +76,8 @@ def register(request):
             elif User.objects.filter(username=username).exists():
                 messages.error(request, "Username Taken")
                 return redirect('register')
-            
-            #Else condition executed if the above conditions are not fulfilled    
+
+            #Else condition executed if the above conditions are not fulfilled
             else:
                 ctx = {
                     'user' : username
@@ -106,7 +106,7 @@ def register(request):
 
     else:
         return render(request, 'register.html', context)
-    
+
 
 # from django.http import JsonResponse
 
@@ -143,7 +143,7 @@ def shipping(request):
             # Handle the case where the selected city or country doesn't exist
             messages.error(request, "An error occurred while adding shipping info. Please try again.")
             return redirect('shipping')
-    
+
     for country in countries:
         cities = list(country.city_set.values('id', 'name'))
         cities_data.append({'country_id': str(country.id), 'cities': cities})
@@ -170,7 +170,7 @@ def get_cities_by_country(request, country_id):
 def account(request):
     cart = request.session.get('cart', {})
     total_quantity_in_cart = sum(sum(details['quantity'] for details in sizes.values()) for sizes in cart.values())
-    
+
     context ={
         'title' : 'Account Management',
         'total_items_in_cart' : total_quantity_in_cart,

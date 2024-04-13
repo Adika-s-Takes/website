@@ -370,5 +370,6 @@ def item_search_results(request):
     context = {
         'items': items,
         'query': query,
+        'title' : query,
     }
     return render(request, 'search_results.html', context)
