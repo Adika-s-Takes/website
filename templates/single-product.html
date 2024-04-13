@@ -9,9 +9,9 @@
             {% for message in messages %}
               <div class="border border-1 rounded u-full-width p-3" style="border: 1px solid #7ea021;">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                {{message}}
-                <a href="{% url 'checkout' %}" class="btn btn-primary">Checkout</a>
-                <a href="{% url 'shop' %}" class="btn btn-outline-primary">Continue Shopping</a>
+                <p>{{message}}</p>
+                <a href="{% url 'checkout' %}" class="btn btn-primary"><i class="bi bi-chevron-double-right"></i> Proceed to checkout</a>
+                <a href="{% url 'shop' %}" class="btn btn-outline-dark"><i class="bi bi-cart"></i> Continue Shopping</a>
               </div>
             {% endfor %}
           {% endif %}
