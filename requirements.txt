@@ -9,7 +9,8 @@ cloudinary==1.39.1
 cryptography==42.0.5
 defusedxml==0.7.1
 Django==5.0.2
-django-allauth==0.61.1
+django-allauth==0.53.1
+django-auth-style==0.8.1
 django-autoslug==1.9.9
 django-cloudinary-storage==0.3.0
 django-environ==0.11.2
