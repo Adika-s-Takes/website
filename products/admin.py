@@ -66,4 +66,5 @@ admin.site.register(ProductTag)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(ProductReview)
 admin.site.register(Size)
+admin.site.register(Wishlist, WishlistAdmin)
 # Register your models here.
