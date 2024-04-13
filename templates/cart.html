@@ -7,12 +7,14 @@
     <h2>My cart</h2>
     <p>Your shopping cart contains all the items you've selected for purchase. Review the items below and proceed to checkout when you're ready to complete your purchase.</p>
     {% if messages %}
-    {% for message in messages %}
-    <div class="alert broder rounded p-4">
-      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-      {{message}}
-    </div>
-    {% endfor %}
+        {% for message in messages %}
+            <div class="rounded u-full-width p-3" style="border: 1.7px solid #7ea021;">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            <p>{{message}}</p>
+            <a href="{% url 'checkout' %}" class="btn btn-primary"><i class="bi bi-chevron-double-right"></i> Proceed to checkout</a>
+            <a href="{% url 'shop' %}" class="btn btn-outline-dark"><i class="bi bi-cart"></i> Continue Shopping</a>
+            </div>
+        {% endfor %}
     {% endif %}
     <div class="row">
       {% for size, items in grouped_items.items %}
