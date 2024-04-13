@@ -39,6 +39,7 @@
         </div>
       </div>      
     </div>
+    {% if shipping_info %}
     <form id="checkout-form" method="POST">
       {% csrf_token %}
       <h3>Where would you like us to ship?</h3>
@@ -70,6 +71,11 @@
         </div>
       </div>
     </form>
+    {% endif %}
+    {% else %}
+    <h3>Shipping info</h3>
+    <p>It appears you have no shipping info. Click the button below to add shipping info</p>
+    <a href="{% url 'shipping' %}" class="btn btn-primary"><i class="bi bi-truck"></i> Add Shipping Info</a>
     <a href="{% url 'shop' %}" class="btn btn-outline-dark"><i class="bi bi-cart"></i> Continue Shopping</a>
   </div>
 </section>
