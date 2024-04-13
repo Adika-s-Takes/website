@@ -59,8 +59,8 @@
                       {% csrf_token %}
                       <p>{{item.description}}</p>
                       {% if item.customizable == True %}
-                      <input type="number" name="number" min="1" class="u-full-width me-3" placeholder="Jersey Number:EX; 10">
-                      <input type="text" name="name" class="u-full-width me-3" placeholder="Name on Jersey: Ex; Messi">
+                      <input type="number" name="number" min="1" class="u-full-width me-3" placeholder="Jersey Number:EX; 10" required>
+                      <input type="text" name="name" class="u-full-width me-3" placeholder="Name on Jersey: Ex; Messi" required>
                       {% endif %}
                       <div class="form-item d-flex">
                         <input type="text" hidden name="product" value="{{item.id}}">
