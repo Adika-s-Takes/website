@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'auth_style',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
