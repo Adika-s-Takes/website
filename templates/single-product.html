@@ -7,10 +7,11 @@
         <div class="col-lg-7">
           {% if messages %}
             {% for message in messages %}
-              <div class="alert border border-1 rounded u-full-width p-3">
+              <div class="border border-1 rounded u-full-width p-3" style="border: 1px solid #7ea021;">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
                 {{message}}
-                <p>You can choose to <a href="{% url 'checkout' %}">checkout</a> or continue shopping</p>
+                <a href="{% url 'checkout' %}" class="btn btn-primary">Checkout</a>
+                <a href="{% url 'shop' %}" class="btn btn-outline-primary">Continue Shopping</a>
               </div>
             {% endfor %}
           {% endif %}

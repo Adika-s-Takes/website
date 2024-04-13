@@ -387,8 +387,14 @@ def add_to_wishlist(request, pk):
     user = request.user
     item = Item.objects.get(id=pk)
     wishlist_item = Wishlist(user=user, item=item)
-    wishlist_item.save()
-    return redirect('wishlist')
+    if Wishlist.objects.filter(user=user, item=item).exists():
+        messages.info(request, "Nice try chief, this item is already in your wishlist")
+        return redirect('wishlist')
+    else:
+        wishlist_item.save()
+        messages.info(request, "Alright, you've made a wish, now let's pray it gets granted, Goodluck.")
+        return redirect('wishlist')
+
 
 @login_required
 def remove_from_wishlist(request, pk):
