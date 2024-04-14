@@ -5,7 +5,12 @@
 <section id="cart" class="cart">
   <div class="container mt-3">
     <h2>My cart</h2>
+    {% if grouped_items.items %}
     <p>Your shopping cart contains all the items you've selected for purchase. Review the items below and proceed to checkout when you're ready to complete your purchase.</p>
+    {% else %}
+    <p>You have no items in your shoping cart. Start shopping to add items to your cart.</p>
+    <a href="{% url 'shop' %}" class="btn btn-outline-dark"><i class="bi bi-cart"></i> Start Shopping</a>
+    {% endif %}
     {% if messages %}
         {% for message in messages %}
             <div class="rounded u-full-width p-3" style="border: 1.7px solid #7ea021;">
@@ -17,6 +22,7 @@
         {% endfor %}
     {% endif %}
     <div class="row">
+    {% if grouped_items.items %}
       {% for size, items in grouped_items.items %}
       {% for item_dict in items %}
           <div class="product-item col-lg-4 col-md-6 col-sm-6 product-rounded padding-small">
@@ -56,12 +62,15 @@
           </div>
       {% endfor %}
   {% endfor %}
+  {% endif %}
 
     </div>
     <hr>
+    {% if grouped_items.items %}
     <h4>Total: NGN{{ total_price_all_items }} (excluding shipping fees)</h4>
     <a href="{% url 'checkout' %}" class="btn btn-primary"><i class="bi bi-chevron-double-right"></i> Proceed to checkout</a>
     <a href="{% url 'shop' %}" class="btn btn-outline-dark"><i class="bi bi-cart"></i> Continue Shopping</a>
+    {% endif %}
   </div>
 </section>
 {% endblock content %}
