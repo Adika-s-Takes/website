@@ -7,6 +7,7 @@
     <h3>Checkout - Order Summary</h3>
     <div class="row">
       <div class="col-md-10">
+        {% if grouped_items.items %}
         <div class="responsive-table">
           <table class="table u-full-width">
             <thead>
@@ -37,6 +38,10 @@
             </tbody>
           </table>
         </div>
+        {% else %}
+        <p>You have no items available for checkout. Add some items to your cart and come back for checkout</p>
+        <a href="{% url 'shop' %}" class="btn btn-primary">Start Shopping</a>
+        {% endif %}
       </div>      
     </div>
     {% if shipping_info %}
@@ -67,7 +72,7 @@
           <input type="hidden" name="redirect_url" value="https://adikasstakes.pythonanywhere.com/thank-you" />
           <input type="hidden" name="customer[name]" value="{{ user.first_name }} {{ user.last_name }}" />
           <input type="hidden" name="customer[email]" value="{{ user.email }}" />
-          <button type="submit" class="btn btn-dark"><i class="bi bi-chevron-double-right"></i> Checkout</button>
+          <button type="submit" class="btn btn-dark" {% if grouped_items.items %} {% else %}disabled{% endif %}><i class="bi bi-chevron-double-right"></i> Checkout</button>
         </div>
       </div>
     </form>
