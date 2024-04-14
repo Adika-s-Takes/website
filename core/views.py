@@ -106,9 +106,13 @@ def thank_you(request):
 
                 # Clear the cart
                 request.session['cart'] = {}
+                cart = request.session.get('cart', {})
+                total_quantity_in_cart = sum(sum(details['quantity'] for details in sizes.values()) for sizes in cart.values())
+
 
                 context = {
-                    'title': 'Thank You!'
+                    'title': 'Thank You!',
+                    'total_items_in_cart' : total_quantity_in_cart,
                 }
 
                 # Payment was successful, render the thank you page

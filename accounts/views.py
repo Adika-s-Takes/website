@@ -160,9 +160,14 @@ def shipping(request):
 @login_required
 def shipping_detail(request):
     locations = ShippingInfo.objects.filter(user=request.user)
+    cart = request.session.get('cart', {})
+    total_quantity_in_cart = sum(sum(details['quantity'] for details in sizes.values()) for sizes in cart.values())
+
     context = {
         'title' : 'Shiiping Info',
         'shipping_info' : locations,
+        'total_items_in_cart' : total_quantity_in_cart,
+
     }
     return render(request, 'shipping_detail.html', context)
 

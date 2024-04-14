@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="site-banner">
+    <div class="banner-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="breadcrumb-area padding-large">
+              <h1 class="page-title">500 - Server Error</h1>
+              <h5>Looks like something went wrong on our end, you can try performing the action that led you here again. If you are still unsuccessful in carrying out your task, then reach out to customer support for visiting the contact us page <a href="{% url 'contact' %}">here</a></h5>
+              <a href="{% url 'index' %}" class="btn btn-primary"><i class="bi bi-home"></i> Back to home</a>
+              <a href="{% url 'shop' %}" class="btn btn-primary"><i class="bi bi-cart"></i> Continue Shopping</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
