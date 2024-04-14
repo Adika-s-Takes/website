@@ -22,14 +22,14 @@
               <input type="text" minlength="2" name="street_name" placeholder="Street Name" class="u-full-width bg-light" required>
               <input type="text" minlength="2" name="phone_number" placeholder="Phone Number Ex: +23412345678" class="u-full-width bg-light" required>
               <input type="text" minlength="2" name="address" placeholder="Address" class="u-full-width bg-light" required>
-              
+
               <select onchange="updateCities(this);" name="country" id="country" class="form-control u-full-width">
                 <option value="" selected="selected">Select Country</option>
                 {% for country in countries %}
                   <option value="{{ country.id }}">{{ country.name }}</option>
                 {% endfor %}
               </select>
-              
+
               <select name="city" id="city" class="form-control select-city u-full-width" required>
                 <option value="" selected="selected">Select City</option>
               </select>

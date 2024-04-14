@@ -3283,3 +3283,20 @@ section.categories .category-content a{
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+
+/* CSS for responsiveness */
+.responsive-table {
+  overflow-x: auto; /* Enable horizontal scrolling */
+}
+
+/* Responsive styles using media queries */
+@media (max-width: 768px) {
+  .table {
+    width: 100%; /* Make table width 100% on smaller screens */
+  }
+  .table th,
+  .table td {
+    padding: 8px; /* Adjust padding for better readability on smaller screens */
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+}

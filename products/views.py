@@ -232,7 +232,7 @@ def generate_unique_reference():
     return unique_reference
 
 
-
+@login_required
 def checkout(request):
     cart = request.session.get('cart', {})
     items = []
@@ -406,4 +406,3 @@ def remove_from_wishlist(request, pk):
     Wishlist.objects.get(item=item).delete()
     messages.info(request, "Item removed from wishlist. Sad to see you give up on a wish. You can try wishing again by taking a look at other products")
     return redirect('wishlist')
-    
