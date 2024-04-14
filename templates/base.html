@@ -171,19 +171,13 @@
                 <h5 class="widget-title">Adikastakes</h5>
                 <ul class="menu-list list-unstyled">
                   <li class="menu-item">
-                    <a href="about.html">About us</a>
+                    <a href="{% url 'about' %}">About us</a>
                   </li>
                   <li class="menu-item">
-                    <a href="#">Conditions </a>
+                    <a href="#">Terms and Conditions </a>
                   </li>
                   <li class="menu-item">
-                    <a href="blog.html">Our Journals</a>
-                  </li>
-                  <li class="menu-item">
-                    <a href="#">Careers</a>
-                  </li>
-                  <li class="menu-item">
-                    <a href="#">Affiliate Programme</a>
+                    <a href="{% url 'shop' %}">Shop</a>
                   </li>
                 </ul>
               </div>
@@ -193,22 +187,16 @@
                 <h5 class="widget-title">Customer Service</h5>
                 <ul class="menu-list list-unstyled">
                   <li class="menu-item">
-                    <a href="faqs.html">FAQ</a>
+                    <a href="{% url 'faq' %}">FAQ</a>
                   </li>
                   <li class="menu-item">
-                    <a href="contact.html">Contact</a>
+                    <a href="{% url 'contact' %}">Contact</a>
                   </li>
                   <li class="menu-item">
-                    <a href="#">Privacy Policy</a>
+                    <a href="{% url 'faq' %}">Privacy Policy</a>
                   </li>
                   <li class="menu-item">
-                    <a href="#">Returns & Refunds</a>
-                  </li>
-                  <li class="menu-item">
-                    <a href="#">Cookie Guidelines</a>
-                  </li>
-                  <li class="menu-item">
-                    <a href="#">Delivery Information</a>
+                    <a href="{% url 'faq' %}">Returns & Refunds</a>
                   </li>
                 </ul>
               </div>
@@ -219,15 +207,19 @@
                 <p>Do you have any questions or suggestions? <a href="mailto:adikawebservices@gmail.com" class="email">adikawebservices@gmail.com</a>
                 </p>
                 <p>Do you need assistance? Give us a call. <br>
-                  <strong>+234 90 2000 4244</strong>
+                  <ul class="menu-list list-unstyled">
+                    <li class="menu-item">
+                      <a href="tel:+2349020004244"><strong>+234 90 2000 4244</strong></a>
+                    </li>
+                  </ul>
                 </p>
               </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="footer-menu">
                 <h5 class="widget-title">Your sports needs in one place</h5>
-                <p>.</p>
-                <div class="social-links">
+                <p>Number One Jersey Vendor in All of Nigeria.</p>
+                <!-- <div class="social-links">
                   <ul class="d-flex list-unstyled">
                     <li>
                       <a href="#">
@@ -250,7 +242,7 @@
                       </a>
                     </li>
                   </ul>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>

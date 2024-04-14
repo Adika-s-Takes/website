@@ -131,6 +131,16 @@ def clear(request):
     request.session['cart'] = {}
     return redirect('shop')
 
+def faq(request):
+    cart = request.session.get('cart', {})
+    total_quantity_in_cart = sum(sum(details['quantity'] for details in sizes.values()) for sizes in cart.values())
+
+    context = {
+        'title' : "FAQs(Frequently Asked Questions)",
+        'total_items_in_cart' : total_quantity_in_cart,
+    }
+    return render(request, 'faq.html', context)
+
 
 
 

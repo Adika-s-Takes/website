@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="faqs">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+          <h2 class="section-title">Frequently Asked Questions</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"> How long would it take for my order to arrive? </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" style="">
+              <div class="accordion-body">
+                <p>After an order has been placed and confirmed by our logictics team, it usually takes anywhere from <strong>1-2</strong> weeks for orders to arrive.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> How do I customize my jersey? </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" style="">
+              <div class="accordion-body">
+                You can customize your jersey by clicking on the <strong>customize</strong> button when viewing the item
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> Do my items appear as seen on the website when they arrive? </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" style="">
+              <div class="accordion-body">
+                Rest assured, as Nigeria's NO.1 Jersey Vendor, honesty and integrity stand at the center of our business.Hence, <strong>your items will appear as seen in the photos on the website.</strong> Trust us, it's not a what you ordered vs what you got situation like the other vendors
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour"> How do refunds work? </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" style="">
+              <div class="accordion-body">
+                You can get a refund on your item if at the time of purchase, the item is no longer in stock. Another way we process refunds is if by any chance, you get a wrong order or the goods purchased from us is damaged.
+                You can open a refund ticket by sending us an email on <a href="mailto:adikawebservices@gmail.com">adikawebservices@gmail.com</a> with the subject of "REFUND" and with the following information in the body of the email
+                <ul>
+                  <li>Date of purchase</li>
+                  <li>Order Reference</li>
+                </ul>
+                After this, it usually takes our team around <strong>five</strong> working days to process a refund request. 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
