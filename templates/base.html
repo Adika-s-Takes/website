@@ -131,6 +131,8 @@
                           <li><a href="{% url 'shop' %}" class="item-anchor {% if current_path == '/products/shop' %}active{% endif %}">Shop</a></li>
                           <li><a href="{% url 'cart' %}" class="item-anchor {% if current_path == '/products/cart' %}active{% endif %}">Cart</a></li>
                           <li><a href="{% url 'wishlist' %}" class="item-anchor {% if current_path == '/products/wishlist' %}active{% endif %}">Wishlist</a></li>
+                          <li><a href="{% url 'track' %}" class="item-anchor {% if current_path == '/track-order' %}active{% endif %}">Track my order</a></li>
+
                         </ul>
                       </li>
 
@@ -197,6 +199,9 @@
                   </li>
                   <li class="menu-item">
                     <a href="{% url 'faq' %}">Returns & Refunds</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="{% url 'track' %}">Track my order</a>
                   </li>
                 </ul>
               </div>

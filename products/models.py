@@ -145,7 +145,6 @@ class Order(models.Model):
     shipping_info = models.ForeignKey('accounts.ShippingInfo', on_delete=models.SET_NULL, null=True)
     size = models.CharField(max_length=300, null=True)
 
-
     def __str__(self):
         return self.item.name
 

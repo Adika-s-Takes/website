@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<section id="subscribe" class="padding-large">
+    <div class="container">
+        <div class="row">
+            <div class="block-text col-md-6">
+            <div class="section-header">
+                <h2 class="section-title">Track your order</h2>
+            </div>
+            <p>Track all of your orders from here</p>
+            </div>
+            <div class="subscribe-content col-md-6">
+            <form id="form"method="get" action="{% url 'track-status' %}" class="d-flex justify-content-between">
+            {% csrf_token %}
+                <input type="text" name="tracking_id" placeholder="Tracking ID">
+                <button class="btn btn-dark" type="submit">Track my order</button>
+            </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

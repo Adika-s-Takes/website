@@ -142,6 +142,27 @@ def faq(request):
     return render(request, 'faq.html', context)
 
 
+def track_order(request):
+    context ={
+        'title' : 'Track Order'
+    }
+    return render(request, 'track.html', context)
+
+def track_results(request):
+    tracking_id = request.GET.get('tracking_id')
+    if tracking_id:
+        items = Order.objects.filter(paid=True, ref=tracking_id)
+        item = Order.objects.first(paid=True, ref=tracking_id)
+    else:
+        return HttpResponse("<h1>You have either supplied an invalid Tracking ID or did not pay for this order. Either way, you no smart boss.</h1>")
+    context = {
+        'items' : items,
+        'item' : item,
+    }
+    return render(request, 'track-results.html', context)
+
+
+
 
 
 
