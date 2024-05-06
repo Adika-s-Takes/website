@@ -3,38 +3,40 @@
 {% block content %}
 
 <section id="tracking" class="padding-small">
-<div class="row">
-    <h2>Order Status - {{item.status}}</h2>
-</div>
-<div class="row">
-    <h5>Here are the orders in your collection under this Tracking ID</h5>
-    {% for order in items %}
-    <div class="product-item col-lg-3 col-md-6 col-sm-6 padding-small">
-    <div class="">
-        <div class="image-holder zoom-effect">
-        <img src="{{order.item.featured_image.url}}" alt="" class="image-rounded image-bg w-100">
+    <div class="conatiner">
+        <div class="row">
+            <h2>Order Status - {{item.status}}</h2>
         </div>
-        <div>
-        <h3 class="fw-bold" style="color: #2D2D2D;">{{order.item.name}}</h3>
-        <p style="color: #2D2D2D;"><b>Price:</b> NGN{{order.price}}</p>
-        <p style="color: #2D2D2D;"><b>Status:</b> {{order.status}}</p>
-        <p style="color: #2D2D2D;"><b>Date of purchase:</b> {{order.timestamp}}</p>
-        <!-- {% if order.item.customizable == True %}
-        <p class="text-muted">Custom Info</p>
-        <p style="color: #2D2D2D;"><b>Name (On Jersey):</b> {{order.name}}</p>
-        <p style="color: #2D2D2D;"><b>Number (On Jersey):</b> {{order.number}}</p>
-        {% endif %} -->
-        <hr>
-        {% if order.item.stock == 0 %}
-        <button class="btn btn-primary" disabled><i class="icon icon-shopping-cart"></i> Out of stock</button> <a href="{% url 'review' order.item.pk %}" class="btn btn-outline-dark"><i class="icon icon-chevron-right"></i> Leave a review</a>
-        {% else %}
-        <a href="{% url 'item_details' order.item.pk %}" class="btn btn-primary"><i class="icon icon-shopping-cart"></i> Buy Again</a> <a href="{% url 'review' order.item.pk %}" class="btn btn-outline-dark"><i class="icon icon-chevron-right"></i> Leave a review</a>
-        {% endif %}
-        </div>
+        <div class="row">
+            <h5>Here are the orders in your collection under this Tracking ID</h5>
+            {% for order in items %}
+            <div class="product-item col-lg-3 col-md-6 col-sm-6 padding-small">
+            <div class="">
+                <div class="image-holder zoom-effect">
+                <img src="{{order.item.featured_image.url}}" alt="" class="image-rounded image-bg w-100">
+                </div>
+                <div>
+                <h3 class="fw-bold" style="color: #2D2D2D;">{{order.item.name}}</h3>
+                <p style="color: #2D2D2D;"><b>Price:</b> NGN{{order.price}}</p>
+                <p style="color: #2D2D2D;"><b>Status:</b> {{order.status}}</p>
+                <p style="color: #2D2D2D;"><b>Date of purchase:</b> {{order.timestamp}}</p>
+                <!-- {% if order.item.customizable == True %}
+                <p class="text-muted">Custom Info</p>
+                <p style="color: #2D2D2D;"><b>Name (On Jersey):</b> {{order.name}}</p>
+                <p style="color: #2D2D2D;"><b>Number (On Jersey):</b> {{order.number}}</p>
+                {% endif %} -->
+                <hr>
+                {% if order.item.stock == 0 %}
+                <button class="btn btn-primary" disabled><i class="icon icon-shopping-cart"></i> Out of stock</button> <a href="{% url 'review' order.item.pk %}" class="btn btn-outline-dark"><i class="icon icon-chevron-right"></i> Leave a review</a>
+                {% else %}
+                <a href="{% url 'item_details' order.item.pk %}" class="btn btn-primary"><i class="icon icon-shopping-cart"></i> Buy Again</a> <a href="{% url 'review' order.item.pk %}" class="btn btn-outline-dark"><i class="icon icon-chevron-right"></i> Leave a review</a>
+                {% endif %}
+                </div>
+            </div>
+            </div>
+            {% endfor %}
+        </div> 
     </div>
-    </div>
-    {% endfor %}
-</div>  
 </section>
 
 <section class="faqs">
