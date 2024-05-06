@@ -152,7 +152,7 @@ def track_results(request):
     tracking_id = request.GET.get('tracking_id')
     if tracking_id:
         items = Order.objects.filter(paid=True, ref=tracking_id)
-        item = Order.objects.first(paid=True, ref=tracking_id)
+        item = items[0]
     else:
         return HttpResponse("<h1>You have either supplied an invalid Tracking ID or did not pay for this order. Either way, you no smart boss.</h1>")
     context = {
