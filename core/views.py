@@ -158,6 +158,7 @@ def track_results(request):
     context = {
         'items' : items,
         'item' : item,
+        'title' : item.ref,
     }
     return render(request, 'track-results.html', context)
 
